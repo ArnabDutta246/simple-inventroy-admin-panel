@@ -1,0 +1,62 @@
+.header-destop {
+    background-color: white;
+    .header-destop-brand-info {
+      small {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+  .header-destop-brand-name img {
+    height: 70px;
+  }
+  .header-desktop-navigation {
+    .header-desktop-navigation-menu {
+      margin: 5px 15px;
+  
+      a,
+      a:visited,
+      a:hover {
+        font-size: 16px;
+        color: rgb(44, 42, 42);
+        text-decoration: none;
+      }
+    }
+    .all-categories-menus {
+      background-color: rgb(238, 0, 0) !important;
+      font-size: 14px !important;
+      color: white;
+      span,
+      i {
+        margin: 2px 5px;
+      }
+    }
+  }
+  // .header-mobile {
+  // }
+  .mobile-sidebar-brand-info {
+    small {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+  .all-side-nav-menus-text {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  a,
+  a:visited,
+  a:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  
+  
