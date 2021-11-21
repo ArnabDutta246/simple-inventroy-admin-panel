@@ -1,0 +1,10 @@
+
+<owl-carousel-o [options]="customOptions" [id]="carouselID">
+    <ng-container *ngFor="let d of cardata;let i=index">
+        <ng-template carouselSlide  [id]="i">
+            <div class="card">
+                <img [src]="d.imageUrl" alt="" srcset="">
+            </div>
+        </ng-template>
+   </ng-container>
+  </owl-carousel-o>
