@@ -16,5 +16,16 @@ export class DataService {
     // {brandName:"Hitachi",imageUrl:"https://logos-world.net/wp-content/uploads/2020/11/Hitachi-Logo.png"},
     // {brandName:"Hitachi",imageUrl:"https://logos-world.net/wp-content/uploads/2020/11/Hitachi-Logo.png"},
   ]
+
+  products = [
+    {name:"DC LED Bulb 5 Watt",price:330,des:"energy savings, Elegents Appearance, Long Life",modal:"LED1533-12",quantity:1,image:"https://png.pngitem.com/pimgs/s/4-48712_white-light-fluorescent-lamp-incandescent-light-bulb-lamp.png"},
+    {name:"Best LED Bulb 15 Watt",price:200,des:"energy savings, Elegents Appearance, Long Life",modal:"LED1533-12",quantity:1,image:"https://atlas-content-cdn.pixelsquid.com/stock-images/led-light-bulb-lightbulb-ENAno48-600.jpg"},
+    {name:"Bulb LED 25 Watt",price:410,des:"energy savings, Elegents Appearance, Long Life",modal:"LED1533-12",quantity:1,image:"https://atlas-content-cdn.pixelsquid.com/stock-images/smart-led-bulb-lightbulb-ZemJYQ1-600.jpg"},
+    {name:"High Volt Breaker",price:210,des:"energy savings, Elegents Appearance, Long Life",modal:"BREKER1533-12",quantity:1,image:"https://atlas-content-cdn.pixelsquid.com/stock-images/circuit-breaker-63dr5a2-600.jpg"},
+    {name:"Breaker High Volt ",price:180,des:"energy savings, Elegents Appearance, Long Life",modal:"BREKER1533-12",quantity:1,image:"https://www.pngplay.com/wp-content/uploads/13/Circuit-Breaker-PNG-HD-Quality.png"},
+    {name:"Switch Smart Board ",price:190,des:"energy savings, Elegents Appearance, Long Life",modal:"BREKER1533-12",quantity:1,image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmOrC9-W4kG6DVf_Yaeq0Dw-FpWx7SbK_aTg&usqp=CAU"},
+    {name:"Breaker High Volt Switch ",price:180,des:"energy savings, Elegents Appearance, Long Life",modal:"BREKER1533-12",quantity:1,image:"http://assets.stickpng.com/images/5896005dcba9841eabab60bf.png"},
+  ]
   constructor() { }
 }
+// 

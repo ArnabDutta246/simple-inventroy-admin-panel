@@ -1,0 +1,23 @@
+<div class="mb-4">
+    <div class="card p-2 bg-white rounded">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="product-image d-flex justify-content-center align-item-center">
+                <img [src]="product.image" alt="" srcset=""
+                    style="height:200px;">
+                </div>
+                <div class="product-info d-flex flex-column justify-content-start align-items-start">
+                <p class="m-0 fw-bolder">{{product.name}}</p>
+                <p class="m-0 text-muted">{{product.modal}}</p>
+                <h5 class="text-danger">{{product.price}} BDT</h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center" *ngIf="showButton">
+                <div class="btn btn-sm btn-block btn-success mx-1" style="padding: 6px 30px;">
+                    <i class="fas fa-shopping-basket"></i> Add to cart
+                </div>
+                <div class="btn btn-sm btn-block btn-light" style="padding: 6px 9px;">
+                    Details
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
