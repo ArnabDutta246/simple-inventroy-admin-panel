@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModuleExport } from './shared-component/carousel/carousel.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -13,7 +14,9 @@ import { CarouselModuleExport } from './shared-component/carousel/carousel.modul
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CarouselModuleExport
+    CarouselModuleExport,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
