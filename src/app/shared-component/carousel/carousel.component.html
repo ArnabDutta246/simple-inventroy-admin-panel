@@ -12,7 +12,7 @@
   <owl-carousel-o [options]="customOptions" [id]="carouselId" *ngIf="carouselId == 'features-slider'">
     <ng-container *ngFor="let d of cardata;let i=index">
         <ng-template carouselSlide  [id]="i">
-            <app-single-product [product]="d"></app-single-product>
+            <app-single-product [product]="d" [showButton]="false"></app-single-product>
         </ng-template>
    </ng-container>
   </owl-carousel-o>

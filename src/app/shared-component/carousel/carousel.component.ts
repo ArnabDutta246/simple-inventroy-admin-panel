@@ -60,7 +60,7 @@ export class CarouselComponent implements OnInit,OnChanges {
   // get brands data
   getBrandsData(){
    this.cardata = this.data.brand;
-   this.customOptions.responsive = {0: { items: 1}, 400: {items: 2},740: { items: 4 },940: {
+   this.customOptions.responsive = {0: { items: 2}, 400: {items: 2},740: { items: 4 },940: {
     items: 6}};
   this.customOptions.autoplayHoverPause = false;
   this.customOptions.navSpeed = 400;
