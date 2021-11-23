@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarouselComponent } from './carousel.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SingleProductModule } from '../product/product.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   ],
   imports: [
     CommonModule,
-    CarouselModule
+    CarouselModule,
+    SingleProductModule
   ],
   exports:[CarouselComponent]
 })

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
 import { DataService } from 'src/app/shared/data/data.service';
-export enum carouselId{
+export enum CarouselId{
   brands = "brands-slider",
   features = "features-slider"
 }
@@ -10,8 +10,10 @@ export enum carouselId{
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit {
-  @Input() carouselID:string;
+export class CarouselComponent implements OnInit,OnChanges {
+  @Input() carouselId:string;
+  @Input() showBrandsSlider:boolean;
+  @Input() showProductSlider:boolean;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -46,7 +48,14 @@ export class CarouselComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getBrandsData();
+    // this.getBrandsData();
+  }
+  ngOnChanges():void{
+    if(this.showBrandsSlider){
+      this.getBrandsData();
+    }else if(this.showProductSlider){
+      this.getFeaturesProducts();
+    }
   }
   // get brands data
   getBrandsData(){
@@ -55,5 +64,13 @@ export class CarouselComponent implements OnInit {
     items: 6}};
   this.customOptions.autoplayHoverPause = false;
   this.customOptions.navSpeed = 400;
+  }
+
+  getFeaturesProducts(){
+    this.cardata = this.data.products;
+    this.customOptions.responsive = {0: { items: 1}, 400: {items: 2},740: { items: 3 },940: {
+     items: 4}};
+   this.customOptions.autoplayHoverPause = true;
+   this.customOptions.navSpeed = 500;
   }
 }
