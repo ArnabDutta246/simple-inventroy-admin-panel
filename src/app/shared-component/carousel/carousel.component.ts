@@ -1,19 +1,20 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
 import { DataService } from 'src/app/shared/data/data.service';
-export enum CarouselId{
-  brands = "brands-slider",
-  features = "features-slider"
+export enum CarouselId {
+  brands = 'brands-slider',
+  features = 'features-slider',
 }
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  styleUrls: ['./carousel.component.scss'],
 })
-export class CarouselComponent implements OnInit,OnChanges {
-  @Input() carouselId:string;
-  @Input() showBrandsSlider:boolean;
-  @Input() showProductSlider:boolean;
+export class CarouselComponent implements OnInit, OnChanges {
+  @Input() carouselId: string;
+  @Input() showBrandsSlider: boolean;
+  @Input() showProductSlider: boolean;
+  @Input() offer: boolean = false;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -21,56 +22,68 @@ export class CarouselComponent implements OnInit,OnChanges {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    navText: ['<i class="fa-chevron-left"></i>', '<i class="fa-chevron-right></i>"'],
+    navText: [
+      '<i class="fa-chevron-left"></i>',
+      '<i class="fa-chevron-right></i>"',
+    ],
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
       400: {
-        items: 2
+        items: 2,
       },
       740: {
-        items: 3
+        items: 3,
       },
       940: {
-        items: 4
-      }
+        items: 4,
+      },
     },
     nav: false,
-    autoplay:true,
-    autoplayHoverPause:true,
-
-  }
+    autoplay: true,
+    autoplayHoverPause: true,
+  };
   // data
-  cardata:any = null;
-  constructor(
-    private data:DataService
-  ) { }
+  cardata: any = null;
+  constructor(private data: DataService) {}
 
   ngOnInit(): void {
     // this.getBrandsData();
   }
-  ngOnChanges():void{
-    if(this.showBrandsSlider){
+  ngOnChanges(): void {
+    if (this.showBrandsSlider) {
       this.getBrandsData();
-    }else if(this.showProductSlider){
+    } else if (this.showProductSlider) {
       this.getFeaturesProducts();
     }
   }
   // get brands data
-  getBrandsData(){
-   this.cardata = this.data.brand;
-   this.customOptions.responsive = {0: { items: 2}, 400: {items: 2},740: { items: 4 },940: {
-    items: 6}};
-  this.customOptions.autoplayHoverPause = false;
-  this.customOptions.navSpeed = 400;
+  getBrandsData() {
+    this.cardata = this.data.brand;
+    this.customOptions.responsive = {
+      0: { items: 2 },
+      400: { items: 2 },
+      740: { items: 4 },
+      940: {
+        items: 6,
+      },
+    };
+    this.customOptions.autoplayHoverPause = false;
+    this.customOptions.navSpeed = 400;
   }
 
-  getFeaturesProducts(){
+  getFeaturesProducts() {
     this.cardata = this.data.products;
-    this.customOptions.responsive = {0: { items: 1}, 400: {items: 2},740: { items: 3 },940: {
-     items: 4}};
-   this.customOptions.autoplayHoverPause = true;
-   this.customOptions.navSpeed = 500;
+    this.customOptions.responsive = {
+      0: { items: 1 },
+      400: { items: 2 },
+      740: { items: 3 },
+      940: {
+        items: 4,
+      },
+    };
+    this.customOptions.autoplayHoverPause = true;
+    this.customOptions.navSpeed = 500;
   }
 }

@@ -1,3 +1,4 @@
+import { ProductDetailsModule } from './../../shared-component/product-details/product-details.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
@@ -10,15 +11,12 @@ import { SingleProductModule } from 'src/app/shared-component/product/product.mo
 const routes: Routes = [
   {
     path: '',
-    component: ProductsComponent
-  }
+    component: ProductsComponent,
+  },
 ];
 
-
 @NgModule({
-  declarations: [
-    ProductsComponent
-  ],
+  declarations: [ProductsComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
@@ -26,7 +24,8 @@ const routes: Routes = [
     HeaderModule,
     FooterModule,
     BreadcrumbModule,
-    SingleProductModule
-  ]
+    SingleProductModule,
+    ProductDetailsModule,
+  ],
 })
-export class ProductsModule { }
+export class ProductsModule {}

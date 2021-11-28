@@ -1,18 +1,17 @@
-
 <owl-carousel-o [options]="customOptions" [id]="carouselId" *ngIf="carouselId == 'brands-slider'">
     <ng-container *ngFor="let d of cardata;let i=index">
-        <ng-template carouselSlide  [id]="i">
+        <ng-template carouselSlide [id]="i">
             <div class="card">
                 <img [src]="d.imageUrl" alt="" srcset="">
             </div>
         </ng-template>
-   </ng-container>
-  </owl-carousel-o>
+    </ng-container>
+</owl-carousel-o>
 
-  <owl-carousel-o [options]="customOptions" [id]="carouselId" *ngIf="carouselId == 'features-slider'">
+<owl-carousel-o [options]="customOptions" [id]="carouselId" *ngIf="carouselId == 'features-slider'">
     <ng-container *ngFor="let d of cardata;let i=index">
-        <ng-template carouselSlide  [id]="i">
-            <app-single-product [product]="d" [showButton]="false"></app-single-product>
+        <ng-template carouselSlide [id]="i">
+            <app-single-product [product]="d" [showButton]="false" [offer]="offer"></app-single-product>
         </ng-template>
-   </ng-container>
-  </owl-carousel-o>
+    </ng-container>
+</owl-carousel-o>

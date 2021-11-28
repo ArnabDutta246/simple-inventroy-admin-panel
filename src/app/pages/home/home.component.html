@@ -136,5 +136,16 @@
     <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'"></app-carousel>
   </div>
 </section>
-
+<section class="bg-light pt-2 pt-lg-4">
+  <div class="container p-2">
+    <div class="px-3 py-4 mt-5 d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div>
+        <h3>Offer Products</h3>
+        <p class="text-muted">Most viewd and sold products </p>
+      </div>
+      <button class="btn btn-sm btn-danger">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
+    </div>
+    <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'" [offer]="true"></app-carousel>
+  </div>
+</section>
 <app-footer></app-footer>

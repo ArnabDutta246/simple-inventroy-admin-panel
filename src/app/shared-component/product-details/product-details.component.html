@@ -1,0 +1,35 @@
+<!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"> -->
+<div class="offcanvas-header">
+  <h5 id="offcanvasRightLabel">Product Details</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<div class="offcanvas-body px-3 py-2" *ngIf="product" style="position: relative;">
+  <div style="position: relative;">
+    <div class="d-flex justify-content-center align-items-center">
+      <img [src]="product?.image" alt="" srcset="" style="height: 230px;">
+    </div>
+    <br>
+    <h5>{{product?.name}}</h5>
+    <p>{{product?.modal}}</p>
+    <h5 class="text-danger">{{product?.price}} BDT</h5>
+    <br>
+    <p class="text-muted">
+      {{product?.des}}
+    </p>
+    <br>
+    <div class="input-group mb-3 px-2">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
+      <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+        aria-describedby="button-addon1" [ngModel]="prodQuantity" class="text-center" readonly>
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2">-</button>
+    </div>
+    <div class="">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" style="padding: 6px 30px;">
+          <i class="fas fa-shopping-basket"></i> Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
