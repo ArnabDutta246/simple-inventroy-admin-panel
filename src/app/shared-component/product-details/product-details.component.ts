@@ -17,4 +17,12 @@ export class ProductDetailsComponent implements OnInit {
   selectedDetails(prod) {
     this.selected.emit(prod);
   }
+
+  // add to cart
+
+  // increment
+
+  // decrement
+
+  // remove 
 }

@@ -113,17 +113,6 @@ export class DataService {
       image: 'http://assets.stickpng.com/images/5896005dcba9841eabab60bf.png',
     },
   ];
-  cart = [];
   constructor() {}
-
-  // add to cart
-  addToCart(prod) {
-    let cartAddedBefore: any = this.cart.filter((p) => p.id == prod.id);
-    if (cartAddedBefore) {
-      cartAddedBefore.quantity = prod.quantity;
-    }
-  }
-
-  // remove to cart
 }
 //

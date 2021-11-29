@@ -14,6 +14,7 @@ export interface Product {
   des: string;
   quantity: number;
   image: string;
+  orderQuantity?:number;
 }
 export interface Cart {
   id: number;

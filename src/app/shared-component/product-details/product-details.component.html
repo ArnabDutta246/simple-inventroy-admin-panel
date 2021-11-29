@@ -6,7 +6,7 @@
 <div class="offcanvas-body px-3 py-2" *ngIf="product" style="position: relative;">
   <div style="position: relative;">
     <div class="d-flex justify-content-center align-items-center">
-      <img [src]="product?.image" alt="" srcset="" style="height: 230px;">
+      <img [src]="product?.image" alt="" srcset="" style="height: 210px;">
     </div>
     <br>
     <h5>{{product?.name}}</h5>
@@ -17,11 +17,11 @@
       {{product?.des}}
     </p>
     <br>
-    <div class="input-group mb-3 px-2">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
-      <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+    <div class="mb-3  ">
+      <button class="btn btn-outline-success rounded-circle mr-2" type="button" id="button-addon1">+</button>
+      <input type="text" class="form-control bg-light border-0" placeholder="" aria-label="Example text with button addon"
         aria-describedby="button-addon1" [ngModel]="prodQuantity" class="text-center" readonly>
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">-</button>
+      <button class="btn btn-outline-danger rounded-circle ml-2" type="button" id="button-addon2">-</button>
     </div>
     <div class="">
       <div class="d-grid gap-2">
