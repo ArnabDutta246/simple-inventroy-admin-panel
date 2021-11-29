@@ -123,5 +123,7 @@ export class DataService {
       cartAddedBefore.quantity = prod.quantity;
     }
   }
+
+  // remove to cart
 }
 //
