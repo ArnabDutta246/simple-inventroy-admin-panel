@@ -23,10 +23,10 @@ export class CartService {
     this.cartSub.next([]);  
   }
   // add to cart
-  addToCart(prod:Product,cart:Cart[]) {
+  addToCart(prod:Product,quantity:number,cart:Cart[]) {
     let cartAddedBefore:Cart[] = cart.filter((p) => p.id == prod.id);
     if (cartAddedBefore.length) {
-      cartAddedBefore[0].quantity = prod.quantity;
+      cartAddedBefore[0].quantity = quantity;
       this.updateCart(cart);
     }
   }
