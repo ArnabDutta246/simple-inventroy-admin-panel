@@ -10,7 +10,7 @@ import {map} from "rxjs/operators"
 export class ProductDetailsComponent implements OnInit,OnChanges {
   @Input() product: any = null;
   @Output() selected = new EventEmitter<any>();
-  prodQuantity: number = 0;
+  prodQuantity: number = 1;
   isInTheCart:boolean = false;
   cartProd:Cart[] = [];
   constructor(
@@ -25,6 +25,7 @@ export class ProductDetailsComponent implements OnInit,OnChanges {
   getCartData():void{ 
     this.cartServ.getAllCartProduct().subscribe(res=>{
      if(res.length){
+       console.log("all carts products",res);
        let prodExist = res.filter(res=>res.id == this.product.id);
        if(prodExist.length){this.isInTheCart = true};
      }
@@ -32,11 +33,11 @@ export class ProductDetailsComponent implements OnInit,OnChanges {
   // selected details
   selectedDetails(prod) {this.selected.emit(prod);}   
   // add to cart
-  addToCart(prod:Product):void{this.cartServ.addToCart(prod,this.prodQuantity,this.cartProd);}
+  addToCart(prod:Product):void{ if(this.prodQuantity>0)this.cartServ.addToCart(prod,this.prodQuantity,this.cartProd);}
   // increment
   incrementCartProd(){this.prodQuantity = this.prodQuantity + 1;}
   // decrement
-  decrementCartProd(){ if(this.prodQuantity > 0) this.prodQuantity = this.prodQuantity - 1;}
+  decrementCartProd(){ if(this.prodQuantity > 1) this.prodQuantity = this.prodQuantity - 1;}
   // remove 
   removeCartProd(){
     let cart = this.cartProd.filter(p=>p.id !== this.product);
