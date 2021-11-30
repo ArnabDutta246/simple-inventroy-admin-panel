@@ -110,7 +110,7 @@ export class DataService {
       des: 'energy savings, Elegents Appearance, Long Life',
       modal: 'BREKER1533-12',
       quantity: 1,
-      image: 'http://assets.stickpng.com/images/5896005dcba9841eabab60bf.png',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ103xJHMHa96tBlzIeihSF8U1qj_5wcHeX0OhbP-MJL2dU5rAw3uVf-AG9u3vs6DboHko&usqp=CAU',
     },
   ];
   constructor() {}

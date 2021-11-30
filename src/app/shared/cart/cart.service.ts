@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Cart, Product } from 'src/app/interface/interfaces';
 
 @Injectable({
@@ -12,10 +13,15 @@ export class CartService {
   constructor() { }
   // get all cart product
   getAllCartProduct():Observable<Cart[]>{
-    return this.cartSub.asObservable()
+    return this.cartSub.asObservable().pipe(
+      tap(da=>{
+        console.log("cart data",da)
+      })
+    )
   }
   // update cart
   updateCart(cart:Cart[]):void{
+    console.log("calling update",cart);
     this.cartSub.next(cart);
   }
   // clear cart
@@ -25,9 +31,15 @@ export class CartService {
   // add to cart
   addToCart(prod:Product,quantity:number,cart:Cart[]) {
     let cartAddedBefore:Cart[] = cart.filter((p) => p.id == prod.id);
-    if (cartAddedBefore.length) {
+    if (cartAddedBefore.length >0) {
       cartAddedBefore[0].quantity = quantity;
       this.updateCart(cart);
+    }else{
+      let prodCart = {...prod,quantity:quantity}
+      console.log(prodCart,prod);
+      cart.push(prodCart);
+      this.updateCart(cart);
     }
+
   }
 }

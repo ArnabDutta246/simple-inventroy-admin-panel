@@ -23,9 +23,9 @@
           </div>
           <div class="header-destop-cart-side-nav">
             <div class="d-flex justify-content-end align-items-center px-lg-3 py-lg-3 p-2">
-              <div class="mx-lg-3 mx-2 btn btn-sm btn-light position-relative">
+              <div class="mx-lg-3 mx-2 btn btn-sm btn-light position-relative" (click)="goToCartPage()">
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
-                  2
+                  {{cartLength}}
                   <span class="visually-hidden">msg</span>
                 </span>
                 <!-- <i class="fas fa-shopping-bag text-dark"></i> -->

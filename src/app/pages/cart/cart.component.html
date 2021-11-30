@@ -1,0 +1,168 @@
+<app-header></app-header>
+<main class="bg-light pt-2 pt-lg-4 mt-5">
+    <div class="container p-2 mt-lg-5 pt-lg-5">
+      <!-- Breadcrumb -->
+      <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'Your cart',url:null}]"></app-breadcrumb>
+<!--  -->
+      <!-- header panel -->
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Products List</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Delivery Address</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Order</button>
+        </li>
+      </ul>
+      <!-- conteiner -->
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <!-- ======== [ Cart section  ] ======== -->
+      <div class="row">
+        <!-- ======== [ Total section ] ======== -->
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="card p-2">
+            <div class="card-header">
+              <h5>Order Summery</h5>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <p class="">Items Add</p>
+              <p class="">3</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <p class="">Total</p>
+              <p class="">3000 BDT</p>
+            </div>
+            <button class="btn btn-success btn-sm">Order Proceed</button>
+          </div>
+      </div>
+        <div class="col-12 col-lg-8 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3 p-2">
+                          <img src="https://m.media-amazon.com/images/I/51z376z5iBL._SL1200_.jpg" alt="" srcset=""
+                          style="height:120px;">
+                        </div>
+                        <div class="col-6 p-2">
+                          <h4>Sony 3268BT Headphone Portable</h4>
+                          <p class="m-0 text-medium">Sony Brand</p>
+                          <p class="fw-bold">2500 Rs/Unit</p>
+                          <button class="btn btn-sm btn-outline-danger">
+                              <i class="far fa-trash-alt"></i> Remove Item
+                          </button>
+                        </div>
+                        <div class="col-3">
+                            <small>Total</small>
+                            <h2 class="m-0 text-success">
+                                2500 Rs
+                            </h2>
+                            <div class="d-flex justify-content-start align-items-center">
+                                <button class="btn btn-sm btn-outline-primary mr-2"> + </button>
+                                <div>
+                                    <p class="mx-3 my-2">1</p>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary ml-2"> - </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-3 p-2">
+                        <img src="https://m.media-amazon.com/images/I/71ynIMjwgwL._SL1500_.jpg" alt="" srcset=""
+                        style="height:120px;">
+                      </div>
+                      <div class="col-6 p-2">
+                        <h4>Sony 3268BT Headphone Portable</h4>
+                        <p class="m-0 text-medium">Sony Brand</p>
+                        <p class="fw-bold">2500 Rs/Unit</p>
+                        <button class="btn btn-sm btn-outline-danger">
+                            <i class="far fa-trash-alt"></i> Remove Item
+                        </button>
+                      </div>
+                      <div class="col-3">
+                          <small>Total</small>
+                          <h2 class="m-0 text-success">
+                              2500 Rs
+                          </h2>
+                          <div class="d-flex justify-content-start align-items-center">
+                              <button class="btn btn-sm btn-outline-primary mr-2"> + </button>
+                              <div>
+                                  <p class="mx-3 my-2">1</p>
+                              </div>
+                              <button class="btn btn-sm btn-outline-primary ml-2"> - </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-3 p-2">
+                        <img src="https://m.media-amazon.com/images/I/81cJ1kUT1LL._AC_SS450_.jpg" alt="" srcset=""
+                        style="height:120px;">
+                      </div>
+                      <div class="col-6 p-2">
+                        <h4>Sony 3268BT Headphone Portable</h4>
+                        <p class="m-0 text-medium">Sony Brand</p>
+                        <p class="fw-bold">2500 Rs/Unit</p>
+                        <button class="btn btn-sm btn-outline-danger">
+                            <i class="far fa-trash-alt"></i> Remove Item
+                        </button>
+                      </div>
+                      <div class="col-3">
+                          <small>Total</small>
+                          <h2 class="m-0 text-success">
+                              2500 Rs
+                          </h2>
+                          <div class="d-flex justify-content-start align-items-center">
+                              <button class="btn btn-sm btn-outline-primary mr-2"> + </button>
+                              <div>
+                                  <p class="mx-3 my-2">1</p>
+                              </div>
+                              <button class="btn btn-sm btn-outline-primary ml-2"> - </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+           <div class="container p-3">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Delivery Address</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+  
+           </div>
+        </div>
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+      </div>
+<!--  -->
+      <div class="empty-cart d-flex flex-column justify-content-center align-items-center py-4 bg-light" *ngIf="emptyCart">
+        <img src="https://img.icons8.com/ios/50/000000/shopping-bag--v1.png" style="height: 75px;" /> <br>
+        <div>
+            <p class="text-dark">Cart is empty. you haven't added any products now.</p>
+        </div>
+      </div>
+    </div>
+</main>      
+
+
+<app-footer></app-footer>     
