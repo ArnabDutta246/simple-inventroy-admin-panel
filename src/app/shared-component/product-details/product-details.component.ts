@@ -43,4 +43,4 @@ export class ProductDetailsComponent implements OnInit,OnChanges {
     let cart = this.cartProd.filter(p=>p.id !== this.product);
     this.cartServ.updateCart(cart);  
   }
-}
+}          
