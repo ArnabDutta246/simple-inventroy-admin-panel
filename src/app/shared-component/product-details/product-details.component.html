@@ -11,17 +11,17 @@
     <br>
     <h5>{{product?.name}}</h5>
     <p>{{product?.modal}}</p>
-    <h5 class="text-danger">{{product?.price}} BDT</h5>
+    <h5 class="text-danger fw-bolder">{{product?.price}} BDT</h5>
     <br>
     <p class="text-muted">
       {{product?.des}}
     </p>
     <br>
-    <div class="mb-3     ">
-      <button class="btn btn-outline-success rounded mr-2" type="button" id="button-addon1" (click)="incrementCartProd()">+</button>
-      <input type="text" class="form-control bg-light border-0" placeholder="" aria-label="Example text with button addon"
-        aria-describedby="button-addon1" [ngModel]="prodQuantity" class="text-center" readonly>
-      <button class="btn btn-outline-danger rounded ml-2" type="button" id="button-addon2" (click)="decrementCartProd()">-</button>
+    <div class="mb-3 d-flex justify-content-center align-items-center">
+      <button class="btn btn-secondary rounded-circle mr-2" type="button" (click)="incrementCartProd()">+</button>
+      <input  style="padding:10px;border: none;background-color: ghostwhite;color:black;font-weight: bolder;" type="text" class="mx-4" placeholder=""
+         [ngModel]="prodQuantity" class="text-center" readonly>
+      <button class="btn btn-secondary rounded-circle px-3 ml-2" type="button"  (click)="decrementCartProd()">-</button>
     </div>
     <div class="">
       <div class="d-grid gap-2">

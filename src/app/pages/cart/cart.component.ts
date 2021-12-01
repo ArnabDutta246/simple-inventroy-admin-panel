@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Cart } from 'src/app/interface/interfaces';
 import { CartService } from 'src/app/shared/cart/cart.service';
@@ -8,18 +9,25 @@ import { CartService } from 'src/app/shared/cart/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit,OnDestroy {
   // observables
   cartObs$ = new Subscription();
   cartProd:Cart[] = [];
   emptyCart:boolean = true;
+  totalItems:number = 0;
+  totalPrice:number = 0
   constructor(
-    private cartServ:CartService   
+    private cartServ:CartService,
+    private router:Router,   
   ) { }
   
   ngOnInit(): void {
+    this.getCartData();
   }
 
+  ngOnDestroy(){
+    this.cartObs$.unsubscribe();
+  }
 
   //get carts data
   getCartData():void{ 
@@ -27,9 +35,23 @@ export class CartComponent implements OnInit {
      if(res.length){
        this.emptyCart = false;
        this.cartProd = res;
+       this.cartProd.forEach(c=>this.totalPrice = c.quantity * c.price + this.totalPrice)
      }else{
       this.emptyCart = true;
      }
   })}
-  
+    // increment
+    incrementCartProd(prod:Cart){prod.quantity = prod.quantity + 1;}
+    // decrement
+    decrementCartProd(prod:Cart){ if(prod.quantity > 1) prod.quantity = prod.quantity - 1;}
+    // remove 
+    removeCartProd(prod:Cart){
+      let cart = this.cartProd.filter(p=>p.id !== prod.id);
+      this.cartServ.updateCart(cart);
+    } 
+    
+    // go to router
+    goToProductsPage(){
+      this.router.navigate(['/products']);
+    }
 }

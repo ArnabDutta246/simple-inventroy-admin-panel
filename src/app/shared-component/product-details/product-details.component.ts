@@ -33,14 +33,18 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
     this.carts$.unsubscribe();
     this.prodQuantity = 1;
     this.isInTheCart = false;
+    this.getCartData();
   }
   //get carts data
   getCartData():void{ 
     this.carts$ = this.cartServ.getAllCartProduct().subscribe(res=>{
      if(res.length){
        console.log("all carts products.. details_p_oninit",res);
-       let prodExist = res.filter(res=>res.id == this.product.id);
-       if(prodExist.length){this.isInTheCart = true};
+       let prodExist:Cart[] = res.filter(res=>res.id == this.product.id);
+       if(prodExist.length){
+         this.isInTheCart = true;
+         this.prodQuantity = prodExist[0].quantity;  
+        };
      }else{
        this.isInTheCart = false;
      }

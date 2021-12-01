@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/shared/data/data.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { DataService } from 'src/app/shared/data/data.service';
 })
 export class HomeComponent implements OnInit {
   featuredProducts:any = [];
-  constructor(private db:DataService) { }
+  constructor(private db:DataService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllFeaturedProducts();
@@ -19,4 +20,9 @@ export class HomeComponent implements OnInit {
   getAllFeaturedProducts(){
     this.featuredProducts = this.db.products;
   }
+
+    // go to router
+    goToProductsPage(){
+      this.router.navigate(['/products']);
+    }
 }

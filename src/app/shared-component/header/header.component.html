@@ -61,25 +61,25 @@
         </div>
         <!-- menus -->
         <div class="header-desktop-navigation-menu">
-          <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+          <a routerLink="/home">Home</a>
         </div>
         <div class="header-desktop-navigation-menu">
-          <a routerLink="/products" routerLinkActive="active">Products</a>
+          <a routerLink="/products">Products</a>
         </div>
         <div class="header-desktop-navigation-menu">
-          <a routerLink="/products" routerLinkActive="active">Offers</a>
+          <a routerLink="#offer">Offers</a>
         </div>
         <div class="header-desktop-navigation-menu">
-          <a routerLink="/products" routerLinkActive="active">About us</a>
+          <a routerLink="#">About us</a>
         </div>
         <div class="header-desktop-navigation-menu">
-          <a routerLink="/products" routerLinkActive="active">Contact us</a>
+          <a routerLink="#">Contact us</a>
         </div>
       </div>
     </div>
     <!-- mobile side bar -->
     <div class="offcanvas offcanvas-start mobile-sidebar" tabindex="-1" id="offcanvasWithBackdropSideBar"
-      aria-labelledby="offcanvasWithBackdropSideBarLabel">
+      aria-labelledby="offcanvasWithBackdropSideBarLabel"  data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1">
       <div class="offcanvas-header bg-light">
         <div class="d-flex justify-content-start align-items-center">
           <img src="./assets/img/skylight-removebg-preview.png" alt="logo" style="height: 40px;" class="border rounded">

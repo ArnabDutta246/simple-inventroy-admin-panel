@@ -77,7 +77,7 @@
     <!-- =========== All Brands =========== -->
     <div class="px-3 py-4 mt-5 d-flex flex-column flex-md-row justify-content-between align-items-center">
       <div>
-        <h3>Top Brands Collections</h3>
+        <h3 class="fw-bolder">Top Brands Collections</h3>
         <p class="text-muted">Get All Your Gadget and Favourite Brands Items</p>
       </div>
       <!-- <button class="btn btn-sm btn-danger">Visit More <i class="fas fa-arrow-right ml-2"></i></button> -->
@@ -93,10 +93,10 @@
   <div class="container p-2">
     <div class="px-3 py-4 mt-5 d-flex flex-column flex-md-row justify-content-between align-items-center">
       <div>
-        <h3>Featured Products</h3>
+        <h3 class="fw-bolder">Featured Products</h3>
         <p class="text-muted">Most viewd and sold products </p>
       </div>
-      <button class="btn btn-sm btn-danger">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
+      <button class="btn btn-sm btn-danger" (click)="goToProductsPage()">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
     </div>
 
     <div class="row my-3 px-4 py-2">
@@ -118,7 +118,7 @@
           <p>Every products contains 20% discout and other combo offers</p>
         </div>
         <div class="col-2 pt-4">
-          <button class="btn btn-light btn-sm">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
+          <button class="btn btn-light btn-sm" (click)="goToProductsPage()">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
       </div>
     </div>
@@ -128,10 +128,10 @@
   <div class="container p-2">
     <div class="px-3 py-4 mt-5 d-flex flex-column flex-md-row justify-content-between align-items-center">
       <div>
-        <h3>Latest Products</h3>
+        <h3 class="fw-bolder">Latest Products</h3>
         <p class="text-muted">Most viewd and sold products </p>
       </div>
-      <button class="btn btn-sm btn-danger">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
+      <button class="btn btn-sm btn-danger" (click)="goToProductsPage()">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'"></app-carousel>
   </div>
@@ -140,10 +140,10 @@
   <div class="container p-2">
     <div class="px-3 py-4 mt-5 d-flex flex-column flex-md-row justify-content-between align-items-center">
       <div>
-        <h3>Offer Products</h3>
+        <h3 class="fw-bolder">Offer Products</h3>
         <p class="text-muted">Most viewd and sold products </p>
       </div>
-      <button class="btn btn-sm btn-danger">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
+      <button class="btn btn-sm btn-danger" (click)="goToProductsPage()">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'" [offer]="true"></app-carousel>
   </div>

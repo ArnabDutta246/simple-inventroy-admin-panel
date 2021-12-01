@@ -8,6 +8,7 @@ import { Breadcrumb } from 'src/app/interface/interfaces';
 })
 export class BreadcrumbComponent implements OnInit {
   @Input() routes:Breadcrumb[] = [];
+  @Input() pageTitle:string = null;
   constructor() { }
 
   ngOnInit(): void {
