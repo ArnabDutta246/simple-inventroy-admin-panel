@@ -11,10 +11,10 @@
           <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Products List</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Delivery Address</button>
+          <button class="nav-link" id="pills-profile-tab" #profileTab [disabled]="profileSec" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Delivery Address</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Order</button>
+          <button class="nav-link" id="pills-contact-tab" #summaryTab [disabled]="summarySec" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Order</button>
         </li>
       </ul>
       <!-- conteiner -->
@@ -36,7 +36,7 @@
               <p class="">Total</p>
               <p class="">{{totalPrice}} BDT</p>
             </div>
-            <button class="btn btn-success btn-sm">Order Proceed</button>
+            <button class="btn btn-warning btn-sm" (click)="proceedToProfile()">Order Proceed <i class="fas fa-angle-double-right ml-2"></i></button>
           </div>
       </div>
         <div class="col-12 col-lg-8 col-md-6">
@@ -44,28 +44,28 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3 p-2">
-                          <img [src]="cart?.image" alt="" srcset=""
+                          <img [src]="cart?.image" alt="" srcset=""   
                           style="height:120px;">
                         </div>
-                        <div class="col-6 p-2">
+                        <div class="col-5 p-2">
                           <h4>{{cart?.name}}</h4>
                           <p class="m-0 text-medium">{{cart?.modal}}</p>
                           <p class="fw-bold">{{cart?.price}} Bdt/Unit</p>
-                          <button class="btn btn-sm btn-outline-danger">
+                          <button class="btn btn-sm btn-outline-danger" (click)="removeCartProd(cart)">
                               <i class="far fa-trash-alt"></i> Remove Item
                           </button>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <small>Total</small>
                             <h2 class="m-0 text-success">
                                 {{cart?.price * cart?.quantity}} BDT
                             </h2>
                             <div class="d-flex justify-content-start align-items-center">
-                                <button class="btn btn-sm btn-outline-primary mr-2"> + </button>
+                                <button class="btn btn-sm btn-secondary rounded-circle mr-2 px-3 py-2" (click)="incrementCartProd(cart)"> + </button>
                                 <div>
                                     <p class="mx-3 my-2">{{cart?.quantity}}</p>
                                 </div>
-                                <button class="btn btn-sm btn-outline-primary ml-2"> - </button>
+                                <button class="btn btn-sm btn-secondary rounded-circle px-3 py-2 ml-2" (click)="decrementCartProd(cart)"> - </button>
                             </div>
                         </div>
                     </div>
@@ -76,19 +76,21 @@
         </div>
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
            <div class="container p-3">
+             <h4 class="fw-bolder">Your Delivery Information</h4>
+             <p class="text-primary">Please your proper information on delivery related where your order will be placed</p>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your name">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your contact number">
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Delivery Address</label>
+              <label for="exampleFormControlTextarea1" class="form-label" placeholder="Enter your delivery address here..">Delivery Address</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-  
+            <button class="btn btn-warning btn-sm" (click)="proceedToSummmary()">Placed Order<i class="fas fa-angle-double-right ml-2"></i></button>
            </div>
         </div>
         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
@@ -105,5 +107,5 @@
     </div>
 </main>      
 
-
+<div class="my-3"></div>
 <app-footer></app-footer>     

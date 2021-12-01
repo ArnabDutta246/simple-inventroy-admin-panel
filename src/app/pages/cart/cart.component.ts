@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Cart } from 'src/app/interface/interfaces';
@@ -10,12 +10,16 @@ import { CartService } from 'src/app/shared/cart/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit,OnDestroy {
+  @ViewChild('profileTab',{ read: ElementRef }) profileTab: ElementRef;
+  @ViewChild('summaryTab',{ read: ElementRef }) summaryTab: ElementRef;
   // observables
   cartObs$ = new Subscription();
   cartProd:Cart[] = [];
   emptyCart:boolean = true;
   totalItems:number = 0;
-  totalPrice:number = 0
+  totalPrice:number = 0;
+  profileSec:boolean = true;
+  summarySec:boolean = true;
   constructor(
     private cartServ:CartService,
     private router:Router,   
@@ -41,9 +45,9 @@ export class CartComponent implements OnInit,OnDestroy {
      }
   })}
     // increment
-    incrementCartProd(prod:Cart){prod.quantity = prod.quantity + 1;}
+    incrementCartProd(prod:Cart){prod.quantity +=  1;this.totalPrice = prod.price + this.totalPrice}
     // decrement
-    decrementCartProd(prod:Cart){ if(prod.quantity > 1) prod.quantity = prod.quantity - 1;}
+    decrementCartProd(prod:Cart){ if(prod.quantity > 1) prod.quantity = prod.quantity - 1;this.totalPrice =  this.totalPrice - prod.price}
     // remove 
     removeCartProd(prod:Cart){
       let cart = this.cartProd.filter(p=>p.id !== prod.id);
@@ -54,4 +58,13 @@ export class CartComponent implements OnInit,OnDestroy {
     goToProductsPage(){
       this.router.navigate(['/products']);
     }
+
+    // proceedToProfile
+    proceedToProfile(){
+      this.profileSec = false;
+      this.profileTab.nativeElement.click();
+    }
+
+    // proceedToSummay
+    proceedToSummary(){this.summarySec = false;  this.summaryTab.nativeElement.click();}
 }
