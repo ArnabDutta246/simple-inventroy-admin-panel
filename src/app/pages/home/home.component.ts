@@ -9,6 +9,7 @@ import { DataService } from 'src/app/shared/data/data.service';
 })
 export class HomeComponent implements OnInit {
   featuredProducts:any = [];
+  selectedProd:any = null;
   constructor(private db:DataService,private router:Router) { }
 
   ngOnInit(): void {
@@ -25,4 +26,9 @@ export class HomeComponent implements OnInit {
     goToProductsPage(){
       this.router.navigate(['/products']);
     }
+      // details
+  prodDetails(e) {
+    //console.log(e);
+        this.selectedProd = e;
+      }
 }

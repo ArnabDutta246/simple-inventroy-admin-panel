@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarouselModuleExport } from 'src/app/shared-component/carousel/carousel.module';
 import { SingleProductModule  } from 'src/app/shared-component/product/product.module';
 import { FooterModule } from 'src/app/shared-component/footer/footer.module';
+import { ProductDetailsModule } from 'src/app/shared-component/product-details/product-details.module';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CarouselModuleExport,
     SingleProductModule,
-    FooterModule 
+    FooterModule,
+    ProductDetailsModule, 
   ]
 })
 export class HomeModule { }

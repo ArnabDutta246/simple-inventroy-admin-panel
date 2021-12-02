@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   }
   // details
   prodDetails(e) {
-    console.log(e);
+//console.log(e);
     this.selectedProd = e;
   }
 }

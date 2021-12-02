@@ -42,7 +42,7 @@ export class CarouselComponent implements OnInit, OnChanges {
     },
     nav: false,
     autoplay: true,
-    autoplayHoverPause: true,
+    autoplayHoverPause:false,
   };
   // data
   cardata: any = null;

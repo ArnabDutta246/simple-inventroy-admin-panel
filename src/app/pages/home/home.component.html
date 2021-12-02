@@ -101,7 +101,7 @@
 
     <div class="row my-3 px-4 py-2">
       <div *ngFor="let product of featuredProducts" class="col-12 col-lg-3 col-md-6">
-        <app-single-product [product]="product" [showButton]="false"></app-single-product>
+        <app-single-product [product]="product" [showButton]="false" (prodDetails)="prodDetails($event)"></app-single-product>
       </div>
     </div>
 
@@ -148,4 +148,9 @@
     <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'" [offer]="true"></app-carousel>
   </div>
 </section>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div *ngIf="selectedProd">
+    <app-product-details [product]="selectedProd"></app-product-details>
+  </div>
+</div>
 <app-footer></app-footer>

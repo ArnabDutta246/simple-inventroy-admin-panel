@@ -82,14 +82,14 @@
                 <p class="text-primary">Please your proper information on delivery related where your order will be placed</p>
                <div class="mb-3">
                  <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your name">
+                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your name" [(ngModel)]="name">
                </div>
                <div class="mb-3">
                  <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
-                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your contact number">
+                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your contact number" [(ngModel)]="phone">
                </div>
                <div class="mb-3">
-                 <label for="exampleFormControlTextarea1" class="form-label" placeholder="Enter your delivery address here..">Delivery Address</label>
+                 <label for="exampleFormControlTextarea1" class="form-label" placeholder="Enter your delivery address here.." [(ngModel)]="address">Delivery Address</label>
                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                </div>
                <button class="btn btn-warning btn-sm" (click)="proceedToSummmary()">Placed Order<i class="fas fa-angle-double-right ml-2"></i></button>

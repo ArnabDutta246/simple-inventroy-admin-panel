@@ -70,7 +70,12 @@ export class CartComponent implements OnInit,OnDestroy {
     }
 
     // proceedToSummay
-    proceedToSummary(){this.summarySec = false;  this.summaryTab.nativeElement.click();}
+    proceedToSummary(){
+      if(this.name && this.phone && this.address){
+      this.summarySec = false;
+      this.summaryTab.nativeElement.click();  
+     }
+    }
 
 
     submitPersonalInfo(){
