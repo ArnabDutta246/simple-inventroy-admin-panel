@@ -5,6 +5,7 @@ const routes: Routes = [
   {path:'home',loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)},
   {path:'products',loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule)},
   {path:'cart',loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule)},
+  {path:'about',loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule)},
   {path:'',pathMatch:'full',redirectTo:'/home'}
 ];
 
