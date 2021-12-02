@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, On
 import { Subscription } from 'rxjs';
 import { Cart, Product } from 'src/app/interface/interfaces';
 import { CartService } from 'src/app/shared/cart/cart.service';
+import { CommonService } from 'src/app/shared/common/common.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,7 +18,8 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
   isInTheCart:boolean = false;
   cartProd:Cart[] = [];
   constructor(
-    private cartServ:CartService    
+    private cartServ:CartService,
+    private alert:CommonService    
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +57,11 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
   addToCart(prod:Product):void{ 
     console.log(prod);
     if(this.prodQuantity>0){
-    this.cartServ.addToCart(prod,this.prodQuantity,this.cartProd);
+    this.cartServ.addToCart(prod,this.prodQuantity,this.cartProd).then(res=>{
+      if(res){
+        this.alert.alert('This product add to your cart, you can change quantity in cart page.Continue shopping','Product added','success')
+      }
+    });
     }
   }
   // increment

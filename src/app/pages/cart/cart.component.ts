@@ -20,6 +20,10 @@ export class CartComponent implements OnInit,OnDestroy {
   totalPrice:number = 0;
   profileSec:boolean = true;
   summarySec:boolean = true;
+  name:string;
+  phone:any;
+  address:string;
+
   constructor(
     private cartServ:CartService,
     private router:Router,   
@@ -67,4 +71,9 @@ export class CartComponent implements OnInit,OnDestroy {
 
     // proceedToSummay
     proceedToSummary(){this.summarySec = false;  this.summaryTab.nativeElement.click();}
+
+
+    submitPersonalInfo(){
+       
+    }
 }

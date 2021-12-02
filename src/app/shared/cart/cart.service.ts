@@ -29,17 +29,20 @@ export class CartService {
     this.cartSub.next([]);  
   }
   // add to cart
-  addToCart(prod:Product,quantity:number,cart:Cart[]) {
-    let cartAddedBefore:Cart[] = cart.filter((p) => p.id == prod.id);
-    if (cartAddedBefore.length >0) {
-      cartAddedBefore[0].quantity = quantity;
-      this.updateCart(cart);
-    }else{
-      let prodCart = {...prod,quantity:quantity}
-      console.log(prodCart,prod);
-      cart.push(prodCart);
-      this.updateCart(cart);
-    }
-
+  addToCart(prod:Product,quantity:number,cart:Cart[]):Promise<boolean> {
+    return new Promise((res,rej)=>{
+      let cartAddedBefore:Cart[] = cart.filter((p) => p.id == prod.id);
+      if (cartAddedBefore.length >0) {
+        cartAddedBefore[0].quantity = quantity;
+        this.updateCart(cart);
+        return res(true);
+      }else{
+        let prodCart = {...prod,quantity:quantity}
+        console.log(prodCart,prod);
+        cart.push(prodCart);
+        this.updateCart(cart);
+        return res(true);
+      }
+    })
   }
 }
