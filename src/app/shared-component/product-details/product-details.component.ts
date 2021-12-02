@@ -17,6 +17,8 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
   prodQuantity: number = 1;
   isInTheCart:boolean = false;
   cartProd:Cart[] = [];
+  finalAdded:number = 0;
+  showAlert
   constructor(
     private cartServ:CartService,
     private alert:CommonService    
@@ -58,9 +60,7 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
     console.log(prod);
     if(this.prodQuantity>0){
     this.cartServ.addToCart(prod,this.prodQuantity,this.cartProd).then(res=>{
-      if(res){
-        this.alert.alert('This product add to your cart, you can change quantity in cart page.Continue shopping','Product added','success')
-      }
+      this.finalAdded = this.prodQuantity;
     });
     }
   }
@@ -72,6 +72,7 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
   removeCartProd(){
     let cart = this.cartProd.filter(p=>p.id !== this.product.id);
     this.cartServ.updateCart(cart);
-    this.prodQuantity = 1;  
+    this.prodQuantity = 1;
+    this.finalAdded = 0;  
   }
 }          
