@@ -9,7 +9,7 @@ export class DataService {
     {
       brandName: 'Hitachi',
       imageUrl:
-        'https://logos-world.net/wp-content/uploads/2020/11/Hitachi-Logo.png',
+        'https://www.pngkit.com/png/detail/609-6092424_ge-hitachi-nuclear-ge-hitachi-logo.png',
     },
     {
       brandName: 'Kent',
