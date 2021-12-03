@@ -97,7 +97,7 @@
                  <label for="exampleFormControlTextarea1" class="form-label" placeholder="Enter your delivery address here..">Delivery Address</label>
                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="address"></textarea>
                </div>
-               <button class="btn btn-warning btn-sm" (click)="proceedToSummary()">Placed Order<i class="fas fa-angle-double-right ml-2"></i></button>
+               <button class="btn btn-warning btn-sm" (click)="proceedToSummary()">Placed Order<i class="fas fa-angle-double-right mx-2"></i></button>
                </div>
                <div class="col-12 col-md-3">
                 <div class="card p-2">
@@ -123,8 +123,9 @@
             <h3>Review Order</h3>
             <p>Please check your address and products once before proceed</p>
             <div class="row">
-              <div class="col-12 col-md-6">
-                <div class="card">
+              <div class="col-12 col-md-6 mb-2">
+                <div class="card p-4">
+                  <h5>Your Delivery Address</h5>
                   <div>{{name}}</div>
                   <div>{{phone}}</div>
                   <div>{{address}}</div>
@@ -143,7 +144,7 @@
                     <p class="">Total</p>
                     <p class="">{{totalPrice}} BDT</p>
                   </div>
-                  <button class="btn btn-success btn-sm" (click)="placedOrder()">Placed Order<i class="fas fa-angle-double-right ml-2"></i></button>
+                  <button class="btn btn-success btn-sm" (click)="placedOrder()">Placed Order<i class="fas fa-angle-double-right mx-2"></i></button>
                 </div>
               </div>
             </div>

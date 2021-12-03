@@ -57,7 +57,7 @@ export class CartComponent implements OnInit,OnDestroy {
       let cart = this.cartProd.filter(p=>p.id !== prod.id);
       this.cartServ.updateCart(cart);
     } 
-    
+      
     // go to router
     goToProductsPage(){
       this.router.navigate(['/products']);
