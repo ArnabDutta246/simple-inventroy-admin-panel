@@ -23,7 +23,7 @@ export class CartComponent implements OnInit,OnDestroy {
   name:string;
   phone:any;
   address:string;
-
+  isWrong:boolean = false;
   constructor(
     private cartServ:CartService,
     private router:Router,   
@@ -71,14 +71,16 @@ export class CartComponent implements OnInit,OnDestroy {
 
     // proceedToSummay
     proceedToSummary(){
+      console.log(this.name, this.phone, this.address)
       if(this.name && this.phone && this.address){
       this.summarySec = false;
+      this.isWrong = false;
       this.summaryTab.nativeElement.click();  
+     }else{
+      this.isWrong = true;
      }
     }
+    placedOrder(){
 
-
-    submitPersonalInfo(){
-       
     }
 }
