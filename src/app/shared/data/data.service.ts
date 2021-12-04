@@ -7,9 +7,9 @@ import { Product } from 'src/app/interface/interfaces';
 export class DataService {
   brand = [
     {
-      brandName: 'Hitachi',
+      brandName: 'Philips',
       imageUrl:
-        'https://www.pngkit.com/png/detail/609-6092424_ge-hitachi-nuclear-ge-hitachi-logo.png',
+        'https://www.logo.wine/a/logo/Philips_Consumer_Lifestyle/Philips_Consumer_Lifestyle-Logo.wine.svg',
     },
     {
       brandName: 'Kent',
@@ -33,12 +33,12 @@ export class DataService {
     {
       brandName: 'syska',
       imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/d/d5/Syska_logo.png',
+        'https://www.freepnglogos.com/uploads/xiaomi-png/xiaomi-logo-png-transparent-xiaomi-logo-images-mi-logo-2.png',
     },
     {
-      brandName: 'Hitachi',
+      brandName: 'Samsung',
       imageUrl:
-        'https://logos-world.net/wp-content/uploads/2020/11/Hitachi-Logo.png',
+        'https://www.freepnglogos.com/uploads/original-samsung-logo-10.png',
     },
   ];
 
