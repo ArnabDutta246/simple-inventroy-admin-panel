@@ -11,6 +11,11 @@
                   <p>Please enter your proper contact information for furthar communication</p>
               </div>
               <div class="card-body">
+                <div class="alert alert-danger fade show" role="alert" *ngIf="isErrorMsg" style="margin-bottom:0;padding: 0.6rem 1rem;">
+                  <small>{{isErrorMsg}} 
+                   <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 1rem;"></button> -->
+                 </small>
+                 </div>
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <div class="mb-3">
