@@ -5,8 +5,11 @@ import { HeaderModule } from 'src/app/shared-component/header/header.module';
 import { FooterModule } from 'src/app/shared-component/footer/footer.module';
 import { BreadcrumbModule } from 'src/app/shared-component/breadcrumb/breadcrumb.module';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes:Routes = [
+  {path:'',component:ContactComponent}
+]
 
 @NgModule({
   declarations: [
@@ -18,7 +21,7 @@ import { FormsModule } from '@angular/forms';
     FooterModule,
     BreadcrumbModule,
     FormsModule,
-    
+    RouterModule.forChild(routes)
   ]
 })
 export class ContactModule { }
