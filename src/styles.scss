@@ -10,4 +10,33 @@
   a:hover {
     color: inherit !important;
     text-decoration: none !important;
-  }    
+  } 
+  .divider {
+    position: relative;
+    background: #dc3545;
+    // padding: 15px;
+    border: .8px solid #dc3545;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .divider:before,
+  .divider:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 59px;
+    border: 11px solid transparent;
+    border-bottom-color: #dc3545;
+    transform: rotate(180deg);
+  }
+  
+  .divider:after {
+    left: 60px;
+    border: 10px solid transparent;
+    border-bottom-color: #dc3545;
+  }
+  .offcanvas{
+    overflow-y: scroll;
+    padding: 20px 10px;
+  } 

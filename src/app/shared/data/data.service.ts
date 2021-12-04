@@ -47,7 +47,7 @@ export class DataService {
       id: 1,
       name: 'DC LED Bulb 5 Watt',
       price: 330,
-      des: 'energy savings, Elegents Appearance, Long Life',
+      des: 'energy savings, Elegents Appearance, Long Life,In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is',
       modal: 'LED1533-12',
       quantity: 1,
       image:
