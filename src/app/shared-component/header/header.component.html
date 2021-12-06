@@ -1,7 +1,8 @@
   <!-- header section -->
   <header class="fixed-top">
-    <div class="border-bottom bg-white">
+    <div class="">
       <!-- desktop header -->
+      <div class="d-none d-md-block bg-white border-bottom">
       <div class="container header-destop">
         <!-- brands information -->
         <div class="pt-2 header-destop-brand-info d-flex justify-content-between align-item-center">
@@ -19,6 +20,35 @@
               class="header-destop-brand-phone d-flex flex-column justify-content-start align-items-start px-lg-4 py-lg-1  border-end d-none d-md-block">
               <small class="text-muted">Need help? Call us</small>
               <p class="mb-0">0123456789</p>
+            </div>
+          </div>
+          <div class="header-destop-cart-side-nav">
+            <div class="d-flex justify-content-end align-items-center px-lg-3 py-lg-3 p-2">
+              <div class="mx-lg-3 mx-2 btn btn-sm btn-light position-relative" (click)="goToCartPage()">
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                  {{cartLength}}
+                  <span class="visually-hidden">msg</span>
+                </span>
+                <!-- <i class="fas fa-shopping-bag text-dark"></i> -->
+                <img src="https://img.icons8.com/ios/50/000000/shopping-bag--v1.png" style="height: 25px;" />
+              </div>
+              <div class="mx-lg-2 btn btn-sm btn-light" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBackdropSideBar" aria-controls="offcanvasWithBackdropSideBar">
+                <i class="fas fa-bars text-dark"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    <!-- mobile -->
+      <div class="bg-white d-block d-md-none container shadow-sm px-2 py-1" style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+        <div class="pt-2 header-destop-brand-info d-flex justify-content-between align-item-center">
+          <div class="header-destop-brand-data d-flex justify-content-start">
+            <div class="header-destop-brand-name px-lg-4 py-lg-1 p-2" style="display:flex; align-items: center;">
+              <img src="./assets/img/skylight-removebg-preview.png" alt="logo" srcset="" class="d-none d-md-block">
+              <img src="./assets/img/skylight-removebg-preview.png" alt="logo" srcset="" class="d-block d-md-none image-fluid" style="height:45px">
+              <!-- <span class="d-block d-md-none">Howladar Electronics</span> -->
             </div>
           </div>
           <div class="header-destop-cart-side-nav">
