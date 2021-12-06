@@ -1,7 +1,7 @@
 <owl-carousel-o [options]="customOptions" [id]="carouselId" *ngIf="carouselId == 'brands-slider'">
     <ng-container *ngFor="let d of cardata;let i=index">
         <ng-template carouselSlide [id]="i">
-            <div class="card">
+            <div class="card bg-white p-2 shadow-sm">
                 <img [src]="d.imageUrl" alt="" srcset="">
             </div>
         </ng-template>
