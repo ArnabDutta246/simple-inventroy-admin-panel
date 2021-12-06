@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main class="bg-light pt-3 pt-lg-4 mt-5">
+<main class="bg-light pt-5 pt-lg-4 mt-5">
   <div class="container p-2 mt-lg-5 pt-lg-5">
     <!-- ======== carousel ========= -->
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -27,35 +27,35 @@
     <!-- ======== services ======== -->
     <div class="container shadow-sm">
       <div class="row mt-lg-4 mt-2 bg-white">
-        <div class="col-12 col-lg-4 col-md-6">
+        <div class="col-6 col-lg-4 col-md-6 border">
           <div class="p-3">
             <div class="row">
-              <div class="col-3">
+              <div class="col-12 col-md-3">
                 <img style="height:65px" src="https://img.icons8.com/color/48/000000/cash-.png"
                   class="animate__animated animate__bounce animate__slow animate__infinite" />
               </div>
-              <div class="col-9">
+              <div class="col-12 col-md-9">
                 <p class="m-0 fw-bold h5">Cash On Delivery</p>
                 <small class="lead fs-6 text-muted">And 100% money back guarantee</small>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-4 col-md-6 border-start">
+        <div class="col-6 col-lg-4 col-md-6 border">
           <div class="p-3">
             <div class="row">
-              <div class="col-3">
+              <div class="col-12 col-md-3">
                 <img style="height:70px" src="https://img.icons8.com/color/48/000000/delivery--v2.png"
                   class="animate__animated animate__headShake animate__slower animate__infinite" />
               </div>
-              <div class="col-9">
+              <div class="col-12 col-md-9">
                 <p class="m-0 fw-bold h5">Free Delivery</p>
                 <small class="lead fs-6 text-muted">Free shipping on orders over 10000 BDT</small>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-4 col-md-6 border-start">
+        <div class="col-12 col-lg-4 col-md-6 border">
           <div class="p-3">
             <div class="row">
               <div class="col-3">
@@ -134,7 +134,7 @@
       </div>
       <button class="btn btn-sm btn-danger" (click)="goToProductsPage()">Visit More <i class="fas fa-arrow-right ml-2"></i></button>
     </div>
-    <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'"></app-carousel>
+    <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'" (prodDetailsE)="prodDetails($event)"></app-carousel>
   </div>
 </section>
 <section class="bg-light pt-2 pt-lg-4" id="offer">
@@ -148,7 +148,7 @@
     </div>
     <div class="divider"></div>
     <br> <br>
-    <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'" [offer]="true"></app-carousel>
+    <app-carousel [showProductSlider]="true" [carouselId]="'features-slider'" (prodDetailsE)="prodDetails($event)" [offer]="true"></app-carousel>
   </div>
 </section>
 <div class="offcanvas offcanvas-end" style="border-top-left-radius: 20px !important;"  tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">

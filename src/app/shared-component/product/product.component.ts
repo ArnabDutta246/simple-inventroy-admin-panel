@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {}
   // selected details
   selectedDetails(prod): void {
+    // console.log('get data',prod)
     this.prodDetails.emit(prod);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit,Output } from '@angular/core';
 import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
 import { DataService } from 'src/app/shared/data/data.service';
 export enum CarouselId {
@@ -15,6 +15,8 @@ export class CarouselComponent implements OnInit, OnChanges {
   @Input() showBrandsSlider: boolean;
   @Input() showProductSlider: boolean;
   @Input() offer: boolean = false;
+  @Output() prodDetailsE = new EventEmitter<any>();
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -44,6 +46,7 @@ export class CarouselComponent implements OnInit, OnChanges {
   };
   // data
   cardata: any = null;
+  selectedProd: any;
   constructor(private data: DataService) {}
 
   ngOnInit(): void {
@@ -84,4 +87,11 @@ export class CarouselComponent implements OnInit, OnChanges {
     this.customOptions.autoplayHoverPause = true;
     this.customOptions.navSpeed = 500;
   }
+    // details
+    prodDetails(e) {
+      //console.log(e);
+     this.prodDetailsE.emit(e);
+   }
 }
+
+
