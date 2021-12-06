@@ -24,7 +24,7 @@
       <div class="row">
         <!-- ======== [ Total section ] ======== -->
         <div class="col-12 col-lg-4 col-md-6">
-          <div class="card p-2">
+          <div class="card p-2 mb-3">
             <div class="card-header">
               <h5>Order Summery</h5>
             </div>
@@ -61,11 +61,11 @@
                                 {{cart?.price * cart?.quantity}} BDT
                             </h3><br> <br>
                             <div class="d-flex justify-content-start align-items-center">
-                                <button class="btn btn-sm btn-secondary rounded-circle mr-2 px-2 py-1" (click)="incrementCartProd(cart)"> + </button>
+                                <button class="btn btn-sm btn-secondary rounded-circle mr-2 px-2 py-1" (click)="incrementCartProd(cart)"> <i class="fas fa-plus"></i> </button>
                                 <div>
                                     <p class="mx-3 my-2">{{cart?.quantity}}</p>
                                 </div> 
-                                <button class="btn btn-sm btn-secondary rounded-circle px-2 py-1 ml-2" (click)="decrementCartProd(cart)"> - </button>
+                                <button class="btn btn-sm btn-secondary rounded-circle px-2 py-1 ml-2" (click)="decrementCartProd(cart)"> <i class="fas fa-minus"></i> </button>
                             </div>
                         </div>
                     </div>

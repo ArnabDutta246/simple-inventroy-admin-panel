@@ -20,10 +20,10 @@
       {{product?.des}}
     </p>
     <div class="mb-3 d-flex justify-content-center align-items-center">
-      <button class="btn btn-secondary rounded-circle mr-2" type="button" (click)="incrementCartProd()">+</button>
+      <button class="btn btn-secondary rounded-circle mr-2" type="button" (click)="incrementCartProd()"><i class="fas fa-plus"></i></button>
       <input  style="padding:10px 0px;border: none;background-color: ghostwhite;color:black;font-weight: bolder;" type="text" class="mx-4" placeholder=""
          [ngModel]="prodQuantity" class="text-center" readonly>
-      <button class="btn btn-secondary rounded-circle px-3 ml-2" type="button"  (click)="decrementCartProd()">-</button>
+      <button class="btn btn-secondary rounded-circle ml-2" type="button"  (click)="decrementCartProd()"> <i class="fas fa-minus"></i></button>
     </div>
     <div class="">
       <div class="d-grid gap-2">
