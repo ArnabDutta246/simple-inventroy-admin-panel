@@ -1,6 +1,9 @@
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';   
 /* You can add global styles to this file, and also import other style files */
+body{
+  scroll-behavior: smooth;
+}
 .footer-section {
     background-image: linear-gradient(to top left, #1a2e61 50%, #111e40 0) !important;
   }
@@ -40,3 +43,30 @@
     overflow-y: scroll;
     padding: 20px 10px;
   } 
+
+  .owl-prev {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 35%;
+    margin-left: -25px;
+    display: block !important;
+    border:0px solid black;
+    border-radius: 50%!important;
+    background: white!important;
+    box-shadow: 0px 3px 7px 0px grey;
+}
+
+.owl-next {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 35%;
+    right: -25px;
+    display: block !important;
+    border:0px solid black;
+    border-radius: 50%!important;
+    background: white!important;
+    box-shadow: 0px 3px 7px 0px grey;
+}
+.owl-prev i, .owl-next i {transform : scale(2,2); color: rgb(0, 0, 0);margin-top: 7px;}

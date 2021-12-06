@@ -4,7 +4,7 @@
   <button type="button" class="btn-close text-reset panel-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 </div>
 <div class="offcanvas-body px-3 py-2" *ngIf="product" style="position: relative;">
-  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="isInTheCart" style="margin-bottom:0;padding: 0.6rem 1rem;">
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="showAlert" style="margin-bottom:0;padding: 0.6rem 1rem;">
    <small> This Item add to yout cart !! <b>{{prodQuantity}}</b> units
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 1rem;"></button>
   </small>
@@ -21,7 +21,7 @@
     </p>
     <div class="mb-3 d-flex justify-content-center align-items-center">
       <button class="btn btn-secondary rounded-circle mr-2" type="button" (click)="incrementCartProd()">+</button>
-      <input  style="padding:10px;border: none;background-color: ghostwhite;color:black;font-weight: bolder;" type="text" class="mx-4" placeholder=""
+      <input  style="padding:10px 0px;border: none;background-color: ghostwhite;color:black;font-weight: bolder;" type="text" class="mx-4" placeholder=""
          [ngModel]="prodQuantity" class="text-center" readonly>
       <button class="btn btn-secondary rounded-circle px-3 ml-2" type="button"  (click)="decrementCartProd()">-</button>
     </div>

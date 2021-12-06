@@ -51,7 +51,7 @@ export class CartComponent implements OnInit,OnDestroy {
     // increment
     incrementCartProd(prod:Cart){prod.quantity +=  1;this.totalPrice = prod.price + this.totalPrice}
     // decrement
-    decrementCartProd(prod:Cart){ if(prod.quantity > 1) prod.quantity = prod.quantity - 1;this.totalPrice =  this.totalPrice - prod.price}
+    decrementCartProd(prod:Cart){ if(prod.quantity > 1){ prod.quantity = prod.quantity - 1;this.totalPrice =  this.totalPrice - prod.price}}
     // remove 
     removeCartProd(prod:Cart){
       let cart = this.cartProd.filter(p=>p.id !== prod.id);

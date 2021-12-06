@@ -18,7 +18,7 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
   isInTheCart:boolean = false;
   cartProd:Cart[] = [];
   finalAdded:number = 0;
-  showAlert
+  showAlert:boolean = false;
   constructor(
     private cartServ:CartService,
     private alert:CommonService    
@@ -47,10 +47,12 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
        let prodExist:Cart[] = res.filter(res=>res.id == this.product.id);
        if(prodExist.length){
          this.isInTheCart = true;
+         this.showAlert = true;
          this.prodQuantity = prodExist[0].quantity;  
         };
      }else{
        this.isInTheCart = false;
+       this.showAlert = false;
      }
   })}
   // selected details
@@ -65,9 +67,9 @@ export class ProductDetailsComponent implements OnInit,OnChanges,OnDestroy {
     }
   }
   // increment
-  incrementCartProd(){this.prodQuantity = this.prodQuantity + 1;}
+  incrementCartProd(){this.prodQuantity = this.prodQuantity + 1;this.showAlert = false;}
   // decrement
-  decrementCartProd(){ if(this.prodQuantity > 1) this.prodQuantity = this.prodQuantity - 1;}
+  decrementCartProd(){ if(this.prodQuantity > 1) this.prodQuantity = this.prodQuantity - 1;this.showAlert = false;}
   // remove 
   removeCartProd(){
     let cart = this.cartProd.filter(p=>p.id !== this.product.id);

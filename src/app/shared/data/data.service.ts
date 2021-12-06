@@ -111,6 +111,35 @@ export class DataService {
       modal: 'BREKER1533-12',
       quantity: 1,
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ103xJHMHa96tBlzIeihSF8U1qj_5wcHeX0OhbP-MJL2dU5rAw3uVf-AG9u3vs6DboHko&usqp=CAU',
+    },  {
+      id: 8,
+      name: 'Bulb LED 25 Watt',
+      price: 410,
+      des: 'energy savings, Elegents Appearance, Long Life',
+      modal: 'LED1533-12',
+      quantity: 1,
+      image:
+        'https://atlas-content-cdn.pixelsquid.com/stock-images/smart-led-bulb-lightbulb-ZemJYQ1-600.jpg',
+    },
+    {
+      id: 9,
+      name: 'High Volt Breaker',
+      price: 210,
+      des: 'energy savings, Elegents Appearance, Long Life',
+      modal: 'BREKER1533-12',
+      quantity: 1,
+      image:
+        'https://atlas-content-cdn.pixelsquid.com/stock-images/circuit-breaker-63dr5a2-600.jpg',
+    },
+    {
+      id: 10,
+      name: 'Breaker High Volt ',
+      price: 180,
+      des: 'energy savings, Elegents Appearance, Long Life',
+      modal: 'BREKER1533-12',
+      quantity: 1,
+      image:
+        'https://www.pngplay.com/wp-content/uploads/13/Circuit-Breaker-PNG-HD-Quality.png',
     },
   ];
   constructor() {}

@@ -22,10 +22,7 @@ export class CarouselComponent implements OnInit, OnChanges {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    navText: [
-      '<i class="fa-chevron-left"></i>',
-      '<i class="fa-chevron-right></i>"',
-    ],
+    navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
     responsive: {
       0: {
         items: 1,
@@ -40,9 +37,10 @@ export class CarouselComponent implements OnInit, OnChanges {
         items: 4,
       },
     },
-    nav: false,
+    nav: true,
     autoplay: true,
     autoplayHoverPause:false,
+    // navText: ["<div class='nav-btn prev-slide'></div>", "<div class='nav-btn next-slide'></div>"],
   };
   // data
   cardata: any = null;
