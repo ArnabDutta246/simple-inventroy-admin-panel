@@ -1,9 +1,34 @@
 import { Injectable } from '@angular/core';
+import { Product } from 'src/app/interface/interfaces';
+import { DatabaseService } from '../database/database.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor() { }
+  constructor(private database:DatabaseService) { }
+
+  // get prod admin
+  getProductAdmin(limit = 40){
+   return this.database.getAllDocumentsByQuery(this.database.allCollections.products,[],null,limit)
+   .then(
+     (res)=>{ 
+       if(!res.empty){
+       return this.simplify(res);
+      }else{
+       return [];
+      }
+    }
+   );
+  }
+
+  // simplify products
+  simplify(dataArr:any){
+    let returnData = [];
+     dataArr.forEach(data=>{
+      returnData.push({...data.data()});
+    })
+    return returnData;
+  }
 }

@@ -3,7 +3,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import firebase from "firebase/app";
-
+export interface QueryObj{
+  field:any;
+  condition:any;
+  value:any;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -14,6 +18,7 @@ export class DatabaseService {
   public frb: any = firebase;
   public allCollections = {
     users: 'users',
+    products:"products"
   };
   // Admin instance of firebase to create new users, this is to avoid messing up the
   // auth token post user creation for the .currentUser data
