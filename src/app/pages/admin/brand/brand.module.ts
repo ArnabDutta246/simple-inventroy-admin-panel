@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrandComponent } from './brand.component';
 
+import { RouterModule, Routes } from '@angular/router';
+const routes:Routes = [
+  { 
+    path:'',component:BrandComponent
+  }
+]
 
 
 @NgModule({
@@ -9,7 +15,8 @@ import { BrandComponent } from './brand.component';
     BrandComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class BrandModule { }

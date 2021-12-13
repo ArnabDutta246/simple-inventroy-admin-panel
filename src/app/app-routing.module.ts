@@ -7,7 +7,7 @@ const routes: Routes = [
   {path:'cart',loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule)},
   {path:'about',loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule)},
   {path:'contact',loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)},
-  {path:'admin/secure/panel',loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)},        
+  {path:'admin',loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)},        
   {path:'',pathMatch:'full',redirectTo:'/home'}
 ];
 

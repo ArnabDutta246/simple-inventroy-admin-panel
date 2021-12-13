@@ -1,19 +1,20 @@
 import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 
-const router:Routes = [
+const routes:Routes = [
   { 
-    path:'',children:[
-      {path:'/login',loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
-      {path:'/brand',loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule)},
-      {path:'/product',loadChildren: () => import('./product/product.module').then(m => m.ProductModule)},     
+    path:'',component:AdminComponent,children:[
+      {path:'ad-login',loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
+      {path:'ad-brand',loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule)},
+      {path:'ad-product',loadChildren: () => import('./product/product.module').then(m => m.ProductModule)},
+      {path:'',redirectTo:'/admin/ad-product',pathMatch:'full'}     
     ]
   },
   {
-    path:'',pathMatch:'full',redirectTo:'/product '
+    path:'',pathMatch:'full',redirectTo:'/admin/ad-product '
   }
 ]
 
@@ -22,7 +23,8 @@ const router:Routes = [
     AdminComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class AdminModule { }
