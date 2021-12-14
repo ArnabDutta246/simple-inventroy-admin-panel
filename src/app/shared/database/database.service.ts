@@ -18,7 +18,8 @@ export class DatabaseService {
   public frb: any = firebase;
   public allCollections = {
     users: 'users',
-    products:"products"
+    products:"products",
+    extras:'extras'
   };
   // Admin instance of firebase to create new users, this is to avoid messing up the
   // auth token post user creation for the .currentUser data

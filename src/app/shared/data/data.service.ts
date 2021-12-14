@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/interface/interfaces';
+import { DatabaseService } from '../database/database.service';
 
 @Injectable({
   providedIn: 'root',
@@ -142,6 +143,14 @@ export class DataService {
         'https://www.pngplay.com/wp-content/uploads/13/Circuit-Breaker-PNG-HD-Quality.png',
     },
   ];
-  constructor() { }
+  constructor(private database:DatabaseService) { }
+  // get extras
+  getExtras(){
+    return this.database.getDocumentById(this.database.allCollections.extras,"data");
+  }
+  
+  // brand
+    // add new
+    // delete
 }
 //
