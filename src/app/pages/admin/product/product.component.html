@@ -65,17 +65,92 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="p-2">
                     <h5>Add New Product</h5>
+                    <div class="alert alert-danger fade show" role="alert" *ngIf="isWrong" style="margin-bottom:0;padding: 0.6rem 1rem;">
+                        <small> {{errMsg}}
+                         <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 1rem;"></button> -->
+                       </small>
+                       </div>
+                       <div class="alert alert-success fade show" role="alert" *ngIf="isUpdated" style="margin-bottom:0;padding: 0.6rem 1rem;">
+                        <small> Product is Inserted Successfully
+                         <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 1rem;"></button> -->
+                       </small>
+                       </div>   
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-6">
-                                    <div class="mb-3">
+                                <div class="col-12 col-lg-6">
+                                      <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Product Name</label>
                                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Product Name" [(ngModel)]="name">
                                       </div>
+                                      <div class="mb-3">
+                                        <label for="exampleFormControlInput2" class="form-label">Brand </label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Products Brand" [(ngModel)]="brand">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="exampleFormControlInput3" class="form-label">Category</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="Category" [(ngModel)]="category">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="exampleFormControlInput4" class="form-label">Quantity</label>
+                                        <input type="number" class="form-control" id="exampleFormControlInput4" placeholder="Product Unit" [(ngModel)]="quantity">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="exampleFormControlInput12" class="form-label">Product Price</label>
+                                        <input type="number" class="form-control" id="exampleFormControlInput12" placeholder="Product Price" [(ngModel)]="price">
+                                      </div>
                                 </div>
-                                <div class="col-6">
-                                    
+                                <div class="col-12 col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput5" class="form-label">Description</label>
+                                        <textarea type="text" class="form-control" id="exampleFormControlInput5" placeholder="description" [(ngModel)]="des">
+                                      </textarea>  
+                                    </div>
+                                    <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" [(ngModel)]="featureCol">
+                                        <label class="form-check-label" for="flexCheckDefault1">
+                                           Add To Feature Section
+                                        </label>
+                                      </div>
+                                     </div>
+                                     <div class="mb-3"> 
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [(ngModel)]="latestCol">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                          Add To Latest Section
+                                        </label>
+                                      </div>
+                                     </div> 
+                                     <div class="mb-3"> 
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [(ngModel)]="offerCol">
+                                          <label class="form-check-label" for="flexCheckChecked">
+                                            Product Has Offer
+                                          </label>
+                                        </div>
+                                       </div> 
+                                      <div class="mb-3" *ngIf="offerCol">
+                                        <label for="exampleFormControlInput11" class="form-label">Offer Price</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput11" placeholder="Category" [(ngModel)]="offerPrice">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="exampleFormControlInput11" class="form-label">Offer Price</label>
+                                        <input type="file"
+                                        class="form-control"
+                                        id="file"
+                                        #userPhoto
+                                        (change)="onFileSelected($event)"
+                                        name="image"
+                                        autocomplete="off"
+                                        >
+                                      </div>
+                                      <div class="mb-3" *ngIf="fb">
+                                        Photo Uploaded
+                                      </div>                               
+                                      <div class="d-grid gap-2">
+                                        <button class="btn btn-success" type="button" (click)="submitProd()">Submit Information</button>
+                                      </div>
                                 </div>
                             </div>
                         </div>

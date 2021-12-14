@@ -22,6 +22,10 @@ export class ProductsService {
     }
    );
   }
+  // add / insert single product
+  addNewProduct(product:Product){
+    return this.database.addDocument(this.database.allCollections.products,product);
+  }
 
   // simplify products
   simplify(dataArr:any){
