@@ -3,7 +3,8 @@ export interface Breadcrumb {
   url: string | null;
 }
 export interface Product {
-  id: number;
+  docId?:string;
+  id: string;
   name: string;
   modal: string;
   brand?: string;
@@ -20,7 +21,7 @@ export interface Product {
   offerPrice?:number|null;
 }
 export interface Cart {
-  id: number;
+  id: string;
   name: string;
   modal: string;
   category?: string;

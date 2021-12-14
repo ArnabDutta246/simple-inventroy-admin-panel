@@ -17,6 +17,8 @@ export class ProductComponent implements OnInit {
   productsList:Product[] = [];
   selectedProd:Product;
   addProdPanel:boolean = false;
+  editMode:boolean = false;
+  //
   id:any|null = null;
   name:string|null = null;
   brand:string|null = null;
@@ -28,7 +30,7 @@ export class ProductComponent implements OnInit {
   latestCol:boolean = false;
   offerCol:boolean = false;
   offerPrice:number|null = null;
-
+  docId:string|null = null;
   //
   isWrong:boolean = false;
   errMsgDef = "Some Information is missing !! please enter your proper product information.";
@@ -47,6 +49,10 @@ export class ProductComponent implements OnInit {
 
   // fetch all products
   fetchAllProducts(){
+   this.isUpdated = false;
+   this.isWrong = false;
+   this.editMode = false;
+   this.addProdPanel = false;
    this.productsList = [];
    this.productServ.getProductAdmin(this.productsLimit).then(
      res=>{
@@ -69,21 +75,33 @@ export class ProductComponent implements OnInit {
 
   // submit prod
   submitProd(){
+    console.log("Object here",this.setProd());
    if(this.fb){ 
-    if(this.name && this.brand && this.category && this.price && this.quantity > 1 && this.des){
-      if(this.offerCol && (this.offerPrice >0 && this.offerPrice < this.price)){
+    if(this.name && this.brand && this.category && this.price && this.quantity >= 1 && this.des){
+      if(this.offerCol && (this.offerPrice  == 0 || this.offerPrice > this.price)){
+        return;
+      }else{
         this.isWrong = false;
         let data = this.setProd();
-        this.productServ.addNewProduct(data).then(res=>{
-          console.log("prod inserted",res);
-          this.isUpdated = true;
-        }).catch(err=>{
-          this.isWrong = true;
-          this.errMsg = "Somethings went wrong !!! Please Try again";
-        });
+        if(!this.editMode){
+          return this.productServ.addNewProduct(data).then(res=>{
+            console.log("prod inserted",res);
+            this.isUpdated = true;
+          }).catch(err=>{
+            this.isWrong = true;
+            this.errMsg = "Somethings went wrong !!! Please Try again";
+          });
       }else{
-        this.isWrong = true;
-        return;
+          return this.productServ.updateProduct(data,this.docId).then(res=>{
+            console.log("prod inserted",res);
+            this.isUpdated = true;
+          }).catch(err=>{
+            console.log(err);
+            this.isWrong = true;
+            this.errMsg = "Somethings went wrong !!! Please Try again";
+          });
+      }
+        
       }
     }else{
       this.isWrong = true;
@@ -93,7 +111,7 @@ export class ProductComponent implements OnInit {
    }
   }
 
-  setProd(){
+  setProd(product?:Product){
    let prod:Product = {
     id:this.id,
     name:this.name,
@@ -109,12 +127,13 @@ export class ProductComponent implements OnInit {
     image:this.fb,
     modal:this.id,
    };
+
    return prod;
   }
 
   // file upload
   onFileSelected(event) {
-    this.id = Date.now();
+    this.id = this.editMode? this.id: Date.now();   
     const file = event.target.files[0];
     const filePath = `ProductsImages/${this.id}`;
     const fileRef = this.storage.ref(filePath);
@@ -138,4 +157,33 @@ export class ProductComponent implements OnInit {
         }
       });
   }
+
+  // edit product
+  editProductData(prod){
+    console.log("prod",prod);
+   // this.setProd(prod);
+    this.id = prod.id;
+    this.name = prod.name;
+    this.brand = prod.brand;
+    this.price = prod.price;
+    this.des = prod.des;
+    this.quantity = prod.quantity;
+    this.category = prod.category;
+    this.featureCol = prod.featureCol;
+    this.latestCol = prod.latestCol;
+    this.offerCol = prod.offerCol;
+    this.offerPrice = prod.offerPrice;
+    this.fb = prod.image;
+    this.editMode = true;
+    this.docId = prod.docId;
+    this.switchToAddSection();
+  }
+  // edit upload 
+  editProdData(){
+    if(this.editMode){
+
+    }
+  }
+  // delete prod
+  deleteProd(prod){}
 }

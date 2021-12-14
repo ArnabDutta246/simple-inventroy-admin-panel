@@ -26,12 +26,18 @@ export class ProductsService {
   addNewProduct(product:Product){
     return this.database.addDocument(this.database.allCollections.products,product);
   }
+  // update product
+  updateProduct(product:Product,docId){
+    console.log("product values",product);
+    return this.database.updateDocument(this.database.allCollections.products,docId,product);
+  }
 
   // simplify products
   simplify(dataArr:any){
     let returnData = [];
      dataArr.forEach(data=>{
-      returnData.push({...data.data()});
+       let dId = data.id;
+      returnData.push({docId:dId,...data.data()});
     })
     return returnData;
   }
