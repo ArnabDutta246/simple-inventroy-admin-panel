@@ -4,24 +4,22 @@
     <!-- ======== carousel ========= -->
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="3000">
-          <img src="./assets/img/1.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-          <img src="./assets/img/2.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" al="3000">
-          <img src="./assets/img/3.jpg" class="d-block w-100" alt="...">
+
+        <div class="carousel-item" [ngClass]="{'active': i === 1}" data-bs-interval="3000" *ngFor="let banner of extraData?.banners;let i=index;">
+          <img [src]="banner" class="d-block w-100" alt="...">
         </div>
       </div>
-      <div class="carousel-indicators d-none d-md-block">
+      <!-- <div class="carousel-indicators d-none d-md-block">
+        <button type="button" data-bs-target="#carouselExampleInterval" [data-bs-slide-to]="i" [ngClass]="i==0?'active':''"
+          [aria-current]="i==0?true:false" [aria-label]="'Slide '+i"  *ngFor="let banner of extraData?.banners;let i=index"></button>
+
         <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active"
           aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1"
           aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
-      </div>
+          aria-label="Slide 3"></button> 
+      </div> -->
     </div>
 
     <!-- ======== services ======== -->

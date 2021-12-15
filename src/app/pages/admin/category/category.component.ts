@@ -20,7 +20,7 @@ export class CategoryComponent implements OnInit {
       this.allCategories = [];
       this.productServ.getExtras().then(res=>{
         let data:any = res.data();
-        this.allCategories = data.categories;
+        this.allCategories = data.categories?data.categories:[];
         this.extraData = data;
         console.log("extras data",data.categories);
       })

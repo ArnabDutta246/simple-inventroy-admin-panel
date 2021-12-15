@@ -1,0 +1,69 @@
+.header-destop {
+  background-color: white;
+}
+
+.header-destop .header-destop-brand-info small {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header-destop .header-destop-brand-info p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.header-destop-brand-name img {
+  height: 70px;
+}
+
+.header-desktop-navigation .header-desktop-navigation-menu {
+  margin: 5px 15px;
+}
+
+.header-desktop-navigation .header-desktop-navigation-menu a,
+.header-desktop-navigation .header-desktop-navigation-menu a:visited,
+.header-desktop-navigation .header-desktop-navigation-menu a:hover {
+  font-size: 16px;
+  color: #2c2a2a;
+  text-decoration: none;
+}
+
+.header-desktop-navigation .all-categories-menus {
+  background-color: #ee0000 !important;
+  font-size: 14px !important;
+  color: white;
+}
+
+.header-desktop-navigation .all-categories-menus span,
+.header-desktop-navigation .all-categories-menus i {
+  margin: 2px 5px;
+}
+
+.mobile-sidebar-brand-info small {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mobile-sidebar-brand-info p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.all-side-nav-menus-text {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+a,
+a:visited,
+a:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.activeR {
+  background: #ffdad7;
+  color: white;
+  font-weight: 700;
+}
+/*# sourceMappingURL=header.component.css.map */

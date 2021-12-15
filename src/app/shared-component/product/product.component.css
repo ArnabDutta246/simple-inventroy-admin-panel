@@ -1,0 +1,12 @@
+.card {
+  cursor: pointer;
+}
+
+.p-card:hover {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  border: .3px solid #dc3545;
+}
+/*# sourceMappingURL=product.component.css.map */

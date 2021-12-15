@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/shared/data/data.service';
+import { ProductsService } from 'src/app/shared/products/products.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,22 @@ import { DataService } from 'src/app/shared/data/data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  extraData:any;
   featuredProducts:any = [];
   selectedProd:any = null;
-  constructor(private db:DataService,private router:Router) { }
+  constructor(private db:DataService,private router:Router,private productServ:ProductsService) { }
 
   ngOnInit(): void {
     this.getAllFeaturedProducts();
+    this.getExtraData()
+  }
+  // get extra data
+  getExtraData(){
+    this.productServ.getExtras().then(res=>{
+      let data:any = res.data();
+      this.extraData = data;
+      console.log("extras data",data.categories);
+    })
   }
   
 

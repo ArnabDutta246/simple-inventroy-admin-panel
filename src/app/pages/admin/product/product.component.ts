@@ -142,7 +142,7 @@ export class ProductComponent implements OnInit {
     offerCol:this.offerCol,
     offerPrice:this.offerPrice,
     image:this.fb,
-    modal:this.id,
+    modal:this.category+this.id,
    };
 
    return prod;
