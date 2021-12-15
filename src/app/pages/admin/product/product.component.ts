@@ -13,6 +13,9 @@ export class ProductComponent implements OnInit {
   @ViewChild('prodList',{ read: ElementRef }) prodList: ElementRef;
   @ViewChild('addProd',{ read: ElementRef }) addProd: ElementRef;
   // variables
+  extraData:any;
+  allCategories = [];
+  allBrands = [];
   productsLimit:number = 40;
   productsList:Product[] = [];
   selectedProd:Product;
@@ -44,9 +47,21 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
   this.fetchAllProducts();
-  }
-
-
+     // get extra data
+     this.getExtraData();
+    }
+    // get extra data
+    getExtraData(){
+      this.allCategories = [];
+      this.allBrands = [];
+      this.productServ.getExtras().then(res=>{
+        let data:any = res.data();
+        this.allCategories = data.categories;
+        this.allBrands = data.brands;
+        this.extraData = data;
+        console.log("extras data",data.categories);
+      })
+    }
   // fetch all products
   fetchAllProducts(){
    this.isUpdated = false;
@@ -87,6 +102,8 @@ export class ProductComponent implements OnInit {
           return this.productServ.addNewProduct(data).then(res=>{
             console.log("prod inserted",res);
             this.isUpdated = true;
+            // reset
+            this.resetAll();
           }).catch(err=>{
             this.isWrong = true;
             this.errMsg = "Somethings went wrong !!! Please Try again";
@@ -157,7 +174,23 @@ export class ProductComponent implements OnInit {
         }
       });
   }
-
+  // reset all
+  resetAll(){
+    this.id = null;
+    this.name = null;
+    this.brand = null;
+    this.price = null;
+    this.des = null;
+    this.quantity = null;
+    this.category = null;
+    this.featureCol = null;
+    this.latestCol = null;
+    this.offerCol = null;
+    this.offerPrice = null;
+    this.fb = null;
+    this.editMode = true;
+    this.docId = null;
+  }
   // edit product
   editProductData(prod){
     console.log("prod",prod);

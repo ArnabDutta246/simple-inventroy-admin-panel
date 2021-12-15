@@ -10,6 +10,7 @@ const routes:Routes = [
       {path:'ad-login',loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
       {path:'ad-brand',loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule)},
       {path:'ad-product',loadChildren: () => import('./product/product.module').then(m => m.ProductModule)},
+      {path:'ad-category',loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)},
       {path:'',redirectTo:'/admin/ad-product',pathMatch:'full'}     
     ]
   },

@@ -10,6 +10,7 @@ import { ProductsService } from 'src/app/shared/products/products.service';
   styleUrls: ['./brand.component.scss']
 })
 export class BrandComponent implements OnInit {
+  extraData:any;
   allBrands = [];
   name:string|null = null;
   // file
@@ -19,14 +20,28 @@ export class BrandComponent implements OnInit {
   constructor(private productServ:ProductsService,private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
+    // get extra data
+    this.getExtraData();
   }
+  
+  // get extra data
+  getExtraData(){
+    this.allBrands = [];
+    this.productServ.getExtras().then(res=>{
+      let data:any = res.data();
+      this.allBrands = data.brands;
+      this.extraData = data;
+      console.log("extras data",data.brands);
+    })
+  }
+
 // file upload
 onFileSelected(event) {
   let id =  Date.now()+this.name;   
   const file = event.target.files[0];
   const filePath = `BrandsImages/${id}`;
   const fileRef = this.storage.ref(filePath);
-  const task = this.storage.upload(`ProductsImages/${id}`, file);
+  const task = this.storage.upload(`BrandsImages/${id}`, file);
   task
     .snapshotChanges()
     .pipe(
@@ -47,8 +62,22 @@ onFileSelected(event) {
     });
 }
 
-submitBrand(){}
+submitBrand(){
+  if(this.name && this.fb){
+  let newBreands = [{name:this.name,image:this.fb}];
+  this.extraData.brands = [...this.allBrands,...newBreands];
+  this.productServ.addBrandOrCategory(this.extraData).then(res=>{
+    this.getExtraData();
+    this.name = "";
+    this.fb = "";
+  });
+}
+}
 deleteBrand(brand){
-
+  this.allBrands = this.allBrands.filter(b=>b.name !== brand.name);
+  this.extraData.brands = this.allBrands;
+  this.productServ.addBrandOrCategory(this.extraData).then(res=>{
+    this.getExtraData();
+  });
 }
 }

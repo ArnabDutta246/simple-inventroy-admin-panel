@@ -41,4 +41,13 @@ export class ProductsService {
     })
     return returnData;
   }
+
+  // get extras
+  getExtras(){
+    return this.database.getDocumentById(this.database.allCollections.extras,"data");
+  }
+  // add brands 
+  addBrandOrCategory(data:any){
+   return this.database.updateDocument(this.database.allCollections.extras,'data',data);
+  }
 }
