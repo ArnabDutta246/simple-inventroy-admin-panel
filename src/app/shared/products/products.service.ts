@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Product } from 'src/app/interface/interfaces';
 import { DatabaseService } from '../database/database.service';
 
@@ -6,9 +7,16 @@ import { DatabaseService } from '../database/database.service';
   providedIn: 'root'
 })
 export class ProductsService {
-
+  loaderObs = new BehaviorSubject<boolean>(false);
+  loaderSub = this.loaderObs.asObservable();
   constructor(private database:DatabaseService) { }
-
+  // loader
+  loaderUpdate(value:boolean){
+    this.loaderObs.next(value);
+  }
+  getLoader(){
+    return this.loaderObs;
+  }
   // get prod admin
   getProductAdmin(limit = 40){
    return this.database.getAllDocumentsByQuery(this.database.allCollections.products,[],null,limit)
@@ -31,12 +39,15 @@ export class ProductsService {
     console.log("product values",product);
     return this.database.updateDocument(this.database.allCollections.products,docId,product);
   }
+  deleteProdcut(prod){
+    return this.database.deleteDocument(this.database.allCollections.products,prod.docId);
+  }
 
   // simplify products
   simplify(dataArr:any){
     let returnData = [];
      dataArr.forEach(data=>{
-       let dId = data.id;
+       let dId = data.id;   
       returnData.push({docId:dId,...data.data()});
     })
     return returnData;

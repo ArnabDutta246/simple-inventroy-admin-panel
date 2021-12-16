@@ -10,6 +10,7 @@ import { Observable } from "rxjs";
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+  @ViewChild('userPhoto',{ read: ElementRef }) userPhoto: ElementRef;
   @ViewChild('prodList',{ read: ElementRef }) prodList: ElementRef;
   @ViewChild('addProd',{ read: ElementRef }) addProd: ElementRef;
   // variables
@@ -112,6 +113,8 @@ export class ProductComponent implements OnInit {
           return this.productServ.updateProduct(data,this.docId).then(res=>{
             console.log("prod inserted",res);
             this.isUpdated = true;
+            // reset
+            this.resetAll();
           }).catch(err=>{
             console.log(err);
             this.isWrong = true;
@@ -150,7 +153,8 @@ export class ProductComponent implements OnInit {
 
   // file upload
   onFileSelected(event) {
-    this.id = this.editMode? this.id: Date.now();   
+    this.productServ.loaderUpdate(true);
+    this.id = this.id? this.id: Date.now();   
     const file = event.target.files[0];
     const filePath = `ProductsImages/${this.id}`;
     const fileRef = this.storage.ref(filePath);
@@ -172,6 +176,7 @@ export class ProductComponent implements OnInit {
         if (url) {
           console.log(url);
         }
+        this.productServ.loaderUpdate(false);
       });
   }
   // reset all
@@ -190,6 +195,7 @@ export class ProductComponent implements OnInit {
     this.fb = null;
     this.editMode = true;
     this.docId = null;
+    this.userPhoto.nativeElement.value = '';
   }
   // edit product
   editProductData(prod){
@@ -211,12 +217,8 @@ export class ProductComponent implements OnInit {
     this.docId = prod.docId;
     this.switchToAddSection();
   }
-  // edit upload 
-  editProdData(){
-    if(this.editMode){
-
-    }
-  }
   // delete prod
-  deleteProd(prod){}
+  deleteProd(prod){
+    this.productServ.deleteProdcut(prod);
+  }
 }

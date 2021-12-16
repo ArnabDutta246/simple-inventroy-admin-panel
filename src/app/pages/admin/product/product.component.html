@@ -33,23 +33,27 @@
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div *ngIf="productsList.length > 0">
                  <div class="row border-bottom py-2" *ngFor="let prod of productsList">
-                     <div class="col-2">
+                     <div class="col-2 border-end">
                          <div>
                              <img [src]="prod?.image" [alt]="prod?.name" srcset="" style="height: 45px;">
                          </div>
                      </div>
-                     <div class="col-10 col-lg-6 p-2 text-align-left">
+                     <div class="col-5 col-lg-6 p-2 text-align-left">
                        <h5>{{ prod?.name}}</h5>
                        <p class="m-0">Brand by {{prod?.brand}}</p>
                      </div>
-                     <div class="col-6 col-lg-3 p-2">
-                        <p class="m-0">{{prod?.quantity}} unit/ {{prod?.price}} BDT</p>
-                     </div>
-                     <div class="col-6 col-lg-2 text-align-right">
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                     <div class="col-5">
+                       <div class="row">
+                         <div class="col-12">
+                          <p class="m-0">{{prod?.quantity}} unit/ {{prod?.price}} BDT</p>
+                         </div>
+                         <div class="col-12">
+                          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button type="button" class="btn btn-warning" (click)="editProductData(prod)">Edit</button>
                             <button type="button" class="btn btn-danger" (click)="deletProd()">Delete</button>
                           </div>
+                         </div>
+                       </div>
                      </div>
                  </div>
                 </div>

@@ -20,10 +20,14 @@ export class HomeComponent implements OnInit {
   }
   // get extra data
   getExtraData(){
+    this.productServ.loaderUpdate(true);
     this.productServ.getExtras().then(res=>{
       let data:any = res.data();
       this.extraData = data;
       console.log("extras data",data.categories);
+      this.productServ.loaderUpdate(false);
+    }).catch(err=>{
+      this.productServ.loaderUpdate(false);
     })
   }
   

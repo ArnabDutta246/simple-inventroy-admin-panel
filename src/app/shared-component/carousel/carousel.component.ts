@@ -16,6 +16,7 @@ export class CarouselComponent implements OnInit, OnChanges {
   @Input() showProductSlider: boolean;
   @Input() offer: boolean = false;
   @Output() prodDetailsE = new EventEmitter<any>();
+  @Input() dataFromParents:any;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -61,7 +62,7 @@ export class CarouselComponent implements OnInit, OnChanges {
   }
   // get brands data
   getBrandsData() {
-    this.cardata = this.data.brand;
+    this.cardata = this.dataFromParents;
     this.customOptions.responsive = {
       0: { items: 2 },
       400: { items: 2 },
