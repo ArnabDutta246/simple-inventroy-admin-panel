@@ -48,9 +48,9 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
   this.fetchAllProducts();
-     // get extra data
-     this.getExtraData();
-    }
+  // get extra data
+  this.getExtraData();
+  }
     // get extra data
     getExtraData(){
       this.allCategories = [];
@@ -61,10 +61,14 @@ export class ProductComponent implements OnInit {
         this.allBrands = data.brands;
         this.extraData = data;
         console.log("extras data",data.categories);
+        this.productServ.loaderUpdate(false);
+      }).catch(err=>{
+        this.productServ.loaderUpdate(false);
       })
     }
   // fetch all products
   fetchAllProducts(){
+   this.productServ.loaderUpdate(true);
    this.isUpdated = false;
    this.isWrong = false;
    this.editMode = false;
@@ -74,9 +78,11 @@ export class ProductComponent implements OnInit {
      res=>{
        console.log(res);
        this.productsList = res;
+       this.productServ.loaderUpdate(false);
      }
    ).catch(err=>{
      this.productsList = [];
+     this.productServ.loaderUpdate(false);
    })
   }
 
@@ -175,7 +181,10 @@ export class ProductComponent implements OnInit {
       .subscribe(url => {
         if (url) {
           console.log(url);
+          this.productServ.loaderUpdate(false);
         }
+        
+      },err=>{
         this.productServ.loaderUpdate(false);
       });
   }
