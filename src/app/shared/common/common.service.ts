@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonService {
+  constructor() {}
 
-  constructor() { }
-  
-alert(msg:string,title:string,type:"success"|"error"|"warning"){
-  console.log("Alert calling");
-
-}
+  alert(msg: string, title: string, type: 'success' | 'error' | 'warning') {
+    console.log('Alert calling');
+  }
 }

@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { ProductDetailsModule } from './../../shared-component/product-details/product-details.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [ProductsComponent],
   imports: [
+    FormsModule,
     RouterModule.forChild(routes),
     CommonModule,
     CarouselModuleExport,

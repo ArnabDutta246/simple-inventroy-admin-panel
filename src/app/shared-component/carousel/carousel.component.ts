@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit,Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
 import { DataService } from 'src/app/shared/data/data.service';
 export enum CarouselId {
@@ -16,7 +23,7 @@ export class CarouselComponent implements OnInit, OnChanges {
   @Input() showProductSlider: boolean;
   @Input() offer: boolean = false;
   @Output() prodDetailsE = new EventEmitter<any>();
-  @Input() dataFromParents:any;
+  @Input() dataFromParents: any;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -25,7 +32,10 @@ export class CarouselComponent implements OnInit, OnChanges {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+    navText: [
+      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+      '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+    ],
     responsive: {
       0: {
         items: 1,
@@ -42,7 +52,7 @@ export class CarouselComponent implements OnInit, OnChanges {
     },
     nav: true,
     autoplay: true,
-    autoplayHoverPause:false,
+    autoplayHoverPause: false,
     // navText: ["<div class='nav-btn prev-slide'></div>", "<div class='nav-btn next-slide'></div>"],
   };
   // data
@@ -76,7 +86,7 @@ export class CarouselComponent implements OnInit, OnChanges {
   }
 
   getFeaturesProducts() {
-    this.cardata = this.data.products;
+    this.cardata = this.dataFromParents;
     this.customOptions.responsive = {
       0: { items: 1 },
       400: { items: 2 },
@@ -88,11 +98,9 @@ export class CarouselComponent implements OnInit, OnChanges {
     this.customOptions.autoplayHoverPause = true;
     this.customOptions.navSpeed = 500;
   }
-    // details
-    prodDetails(e) {
-      //console.log(e);
-     this.prodDetailsE.emit(e);
-   }
+  // details
+  prodDetails(e) {
+    //console.log(e);
+    this.prodDetailsE.emit(e);
+  }
 }
-
-

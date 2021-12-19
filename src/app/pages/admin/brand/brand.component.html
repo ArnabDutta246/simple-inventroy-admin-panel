@@ -1,53 +1,50 @@
 <div class="container">
-    <div class="p-2">
-        <div class="row">
-            <div class="col-12 col-lg-6 mb-2">
-              <div class="card">
-                  <div class="card-header">
-                      Add new brands
-                  </div>
-                  <div class="card-body">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Brand Name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Product Name" [(ngModel)]="name">
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleFormControlInput11" class="form-label">Brand Image</label>
-                        <input type="file"
-                        class="form-control"
-                        id="file"
-                        #userPhoto
-                        (change)="onFileSelected($event)"
-                        name="image"
-                        autocomplete="off"
-                        >
-                      </div>
-                      <div class="mb-3" *ngIf="fb">
-                        Photo Uploaded
-                        <img [src]="fb" alt="" srcset="" style="height: 60px;">
-                      </div>                               
-                      <div class="d-grid gap-2">
-                        <button class="btn btn-success" type="button" (click)="submitBrand()">Submit Information</button>
-                      </div>
+  <div class="p-2">
+    <div class="row">
+      <div class="col-12 col-lg-6 mb-2">
+        <div class="card">
+          <div class="card-header">
+            Add new brands
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Brand Name</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Product Name"
+                [(ngModel)]="name">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput11" class="form-label">Brand Image</label>
+              <input type="file" class="form-control" id="file" #userPhoto (change)="onFileSelected($event)"
+                name="image" autocomplete="off">
+            </div>
+            <div class="mb-3" *ngIf="fb">
+              Photo Uploaded
+              <img [src]="fb" alt="" srcset="" style="height: 60px;">
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-success" type="button" (click)="submitBrand()">Submit Information</button>
+            </div>
 
-                  </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-6">
-              <div class="card py-2" *ngFor="let brand of allBrands">
-                <div class="row">
-                  <div class="col-3">
-                    <img [src]="brand?.image" alt="" srcset="" style="height: 40px;">
-                  </div>
-                  <div class="col-6">
-                    <h1>{{brand?.name}}</h1>
-                  </div>
-                  <div class="col-3">
-                    <button class="btn btn-sm btn-danger" (click)="deleteBrand(brand)">Delete</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="card py-2 px-2" *ngFor="let brand of allBrands">
+          <div class="row">
+            <div class="col-3 border-end">
+              <img [src]="brand?.image" alt="" srcset="" style="height: 40px;">
+            </div>
+            <div class="col-6">
+              <p class="text-medium fst-italic m-0" style="font-size: 11px;">Brand name</p>
+              <p class="m-0">{{brand?.name}}</p>
+            </div>
+            <div class="col-3">
+              <button class="btn btn-sm btn-danger" (click)="deleteBrand(brand)"><i
+                  class="fas fa-trash-alt mx-1"></i>Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

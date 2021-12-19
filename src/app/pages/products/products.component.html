@@ -4,20 +4,19 @@
 
   <div class="container p-2 mt-lg-5 pt-lg-5">
     <!-- Breadcrumb -->
-    <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'Shop',url:null}]" [pageTitle]="'Category Products'"></app-breadcrumb>
+    <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'Shop',url:null}]" [pageTitle]="'Category Products'">
+    </app-breadcrumb>
     <!-- filter section -->
     <div class="row bg-light px-4 py-0">
       <div class="col-12 col-lg-8 col-md-4">
         <p class="m-0 fw-bold">All products</p>
-        <p class="m-0 text-muted">Items 20</p>
+        <p class="m-0 text-muted">Items {{products?.length}} Available</p>
       </div>
       <div class="col-12 col-lg-4 col-md-8">
         <div class="d-flex justify-content-start align-item-center">
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-            <option selected>Select Categories</option>
-            <option value="1">Headphone</option>
-            <option value="2">Light</option>
-            <option value="3">Mobile</option>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="categoryChoose"
+            (ngModelChange)="getAllProducts(categoryChoose)">
+            <option [value]="cat" *ngFor="let cat of extraData?.categories">{{cat}}</option>
           </select>
           <button class="btn btn-light text-dark">
             <i class="fas fa-th-list"></i>
@@ -31,18 +30,28 @@
         <app-single-product [product]="product" [showButton]="false" (prodDetails)="prodDetails($event)">
         </app-single-product>
       </div>
+      <!-- if empty -->
+      <div class="card" *ngIf="products !== null && products.length == 0">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+          <h5 class="text-danger">No Products Found</h5>
+          <p class="text-muted m-0">Sorry!! No product found in this category. Search any other items</p>
+        </div>
+      </div>
     </div>
     <!-- brands   -->
     <div class="py-4 mt-5 d-flex flex-column  justify-content-center align-items-center">
-        <h3 class="fw-bolder">Top Brands <h3 class="fw-bolder text-secondary">Collections</h3></h3>
-        <p class="text-muted">Get All Your Gadget and Favourite Brands Items</p>
+      <h3 class="fw-bolder">Top Brands <h3 class="fw-bolder text-secondary">Collections</h3>
+      </h3>
+      <p class="text-muted">Get All Your Gadget and Favourite Brands Items</p>
     </div>
-    <app-carousel [showBrandsSlider]="true" [carouselId]="'brands-slider'" [dataFromParents]="extraData?.brands"></app-carousel>
+    <app-carousel [showBrandsSlider]="true" [carouselId]="'brands-slider'" [dataFromParents]="extraData?.brands">
+    </app-carousel>
     <br><br>
   </div>
 </main>
 
-<div class="offcanvas offcanvas-end" style="border-top-left-radius: 20px !important;" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end" style="border-top-left-radius: 20px !important;" tabindex="-1" id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel">
   <div *ngIf="selectedProd">
     <app-product-details [product]="selectedProd"></app-product-details>
   </div>

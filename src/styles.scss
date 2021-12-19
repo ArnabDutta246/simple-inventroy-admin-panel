@@ -1,79 +1,89 @@
-@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';   
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 /* You can add global styles to this file, and also import other style files */
-body{
+body {
   scroll-behavior: smooth;
 }
 .footer-section {
-    background-image: linear-gradient(to top left, #1a2e61 50%, #111e40 0) !important;
-  }
+  background-image: linear-gradient(
+    to top left,
+    #1a2e61 50%,
+    #111e40 0
+  ) !important;
+}
 
-  a,
-  a:visited,
-  a:hover {
-    color: inherit !important;
-    text-decoration: none !important;
-  } 
-  .divider {
-    position: relative;
-    background: #dc3545;
-    // padding: 15px;
-    border: .8px solid #dc3545;
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  .divider:before,
-  .divider:after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 59px;
-    border: 11px solid transparent;
-    border-bottom-color: #dc3545;
-    transform: rotate(180deg);
-  }
-  
-  .divider:after {
-    left: 60px;
-    border: 10px solid transparent;
-    border-bottom-color: #dc3545;
-  }
-  .offcanvas{
-    overflow-y: scroll;
-    padding: 20px 10px;
-  } 
+a,
+a:visited,
+a:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+.divider {
+  position: relative;
+  background: #dc3545;
+  // padding: 15px;
+  border: 0.8px solid #dc3545;
+  margin-top: 20px;
+  width: 100%;
+}
 
-  .owl-prev {
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    top: 35%;
-    margin-left: 5px;
-    display: block !important;
-    border:0px solid black;
-    border-radius: 50%!important;
-    background: white!important;
-    box-shadow: 0px 3px 7px 0px grey;
+.divider:before,
+.divider:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 59px;
+  border: 11px solid transparent;
+  border-bottom-color: #dc3545;
+  transform: rotate(180deg);
+}
+
+.divider:after {
+  left: 60px;
+  border: 10px solid transparent;
+  border-bottom-color: #dc3545;
+}
+.offcanvas {
+  overflow-y: scroll;
+  padding: 20px 10px;
+}
+
+.owl-prev {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 35%;
+  margin-left: 5px;
+  display: block !important;
+  border: 0px solid black;
+  border-radius: 50% !important;
+  background: white !important;
+  box-shadow: 0px 3px 7px 0px grey;
 }
 
 .owl-next {
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    top: 35%;
-    right: 5px;
-    display: block !important;
-    border:0px solid black;
-    border-radius: 50%!important;
-    background: white!important;
-    box-shadow: 0px 3px 7px 0px grey;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 35%;
+  right: 5px;
+  display: block !important;
+  border: 0px solid black;
+  border-radius: 50% !important;
+  background: white !important;
+  box-shadow: 0px 3px 7px 0px grey;
 }
-.owl-prev i, .owl-next i {transform : scale(2,2); color: rgb(0, 0, 0);margin-top: 7px;}
+.owl-prev i,
+.owl-next i {
+  transform: scale(2, 2);
+  color: rgb(0, 0, 0);
+  margin-top: 7px;
+}
 
 .nav-link {
   padding: 0.1rem 0.9rem;
 }
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   background-color: #f73224;
 }

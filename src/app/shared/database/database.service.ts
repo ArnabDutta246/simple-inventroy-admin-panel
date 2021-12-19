@@ -2,24 +2,25 @@ import { map, take } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
-import firebase from "firebase/app";
-export interface QueryObj{
-  field:any;
-  condition:any;
-  value:any;
+import firebase from 'firebase/app';
+export interface QueryObj {
+  field: any;
+  operator: any;
+  value: any;
 }
 @Injectable({
   providedIn: 'root',
 })
 export class DatabaseService {
   // path
-  public adminAccessPath = "admin/secure/panel";
- 
+  public adminAccessPath = 'admin/secure/panel';
+
   public frb: any = firebase;
   public allCollections = {
     users: 'users',
-    products:"products",
-    extras:'extras'
+    products: 'products',
+    extras: 'extras',
+    orders: 'orders',
   };
   // Admin instance of firebase to create new users, this is to avoid messing up the
   // auth token post user creation for the .currentUser data
@@ -27,9 +28,7 @@ export class DatabaseService {
     environment.firebaseConfig,
     'admin'
   );
-  constructor(
-    public afs: AngularFirestore,
-  ) {
+  constructor(public afs: AngularFirestore) {
     // TBA
   }
   // create
@@ -51,7 +50,7 @@ export class DatabaseService {
     queryObj: any[] = [],
     textSearchObj: any = null,
     limit: number = null,
-    orderby: any[]=[]
+    orderby: any[] = []
   ) {
     return this.afs
       .collection(collection, (ref) =>
@@ -72,7 +71,7 @@ export class DatabaseService {
     queryObj: any[] = [],
     textSearchObj: any = null,
     limit: number = null,
-    orderby: any[]=[]
+    orderby: any[] = []
   ) {
     return this.afs
       .collection(collection, (ref) =>
@@ -85,17 +84,19 @@ export class DatabaseService {
     queryObj: any[] = [],
     textSearchObj: any = null,
     limit: number = null,
-    orderby: any[]=[]
+    orderby: any[] = []
   ) {
     queryObj.forEach((q) => {
+      console.log('queries', q);
       ref = ref.where(q.field, q.operator, q.value);
     });
-    orderby.forEach(ob=>{
+    orderby.forEach((ob) => {
       ref = ref.orderBy(ob.field, ob.order);
-    })
+    });
     if (limit) {
       ref = ref.limit(limit);
     }
+    console.log('reference are:', ref);
     return ref;
   }
   // Update
@@ -105,10 +106,7 @@ export class DatabaseService {
     docObject: any,
     merge: boolean = false
   ) {
-    return this.afs
-      .collection(collection)
-      .doc(id)
-      .set(docObject, { merge });
+    return this.afs.collection(collection).doc(id).set(docObject, { merge });
   }
   updateDocument(collection: string, id: string, docObject: any) {
     return this.afs.collection(collection).doc(id).update(docObject);
@@ -153,10 +151,10 @@ export class DatabaseService {
       .set({
         serverTime: this.frb.database.ServerValue.TIMESTAMP,
       })
-      .then(function() {
+      .then(function () {
         return sessionsRef.once('value');
       })
-      .then(function(snapshot) {
+      .then(function (snapshot) {
         let data = snapshot.val();
         return data;
       });

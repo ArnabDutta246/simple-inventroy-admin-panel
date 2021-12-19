@@ -1,38 +1,41 @@
 <div class="container">
-    <div class="p-2">
-        <div class="row">
-            <div class="col-12 col-lg-6 mb-2">
-              <div class="card">
-                  <div class="card-header">
-                      Add new Categories
-                  </div>
-                  <div class="card-body">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Category Name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="enter category name" [(ngModel)]="name">
-                      </div>
-                      <div class="d-grid gap-2">
-                        <button class="btn btn-success" type="button" (click)="submitBrand()">Submit Information</button>
-                      </div>
+  <div class="p-2">
+    <div class="row">
+      <div class="col-12 col-lg-6 mb-2">
+        <div class="card">
+          <div class="card-header">
+            Add new Categories
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Category Name</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="enter category name"
+                [(ngModel)]="name">
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-success" type="button" (click)="submitBrand()">Submit Information</button>
+            </div>
 
-                  </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-6">
-              <div class="card py-2 px-2" *ngFor="let cat of allCategories">
-                <div class="row">
-                  <div class="col-1">
-                    <i class="fas fa-angle-double-right"></i>
-                  </div>
-                  <div class="col-8">
-                    <h1>{{cat}}</h1>
-                  </div>
-                  <div class="col-3">
-                    <button class="btn btn-sm btn-danger" (click)="deleteBrand(cat)">Delete</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="card py-2 px-2" *ngFor="let cat of allCategories">
+          <div class="row">
+            <div class="col-1">
+              <i class="fas fa-angle-double-right"></i>
+            </div>
+            <div class="col-8">
+              <p class="m-0 fst-italic" style="font-size: 11px;">Category name</p>
+              <p class="m-0">{{cat}}</p>
+            </div>
+            <div class="col-3">
+              <button class="btn btn-sm btn-danger" (click)="deleteBrand(cat)"><i class="fas fa-trash-alt mx-1"></i>
+                Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

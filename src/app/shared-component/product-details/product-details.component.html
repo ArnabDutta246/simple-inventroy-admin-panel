@@ -1,13 +1,16 @@
 <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"> -->
 <div class="offcanvas-header">
   <h5 id="offcanvasRightLabel">Product Details</h5>
-  <button type="button" class="btn-close text-reset panel-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <button type="button" class="btn-close text-reset panel-close" data-bs-dismiss="offcanvas"
+    aria-label="Close"></button>
 </div>
 <div class="offcanvas-body px-3 py-2" *ngIf="product" style="position: relative;">
-  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="showAlert" style="margin-bottom:0;padding: 0.6rem 1rem;">
-   <small> This Item add to yout cart !! <b>{{prodQuantity}}</b> units
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 1rem;"></button>
-  </small>
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="showAlert"
+    style="margin-bottom:0;padding: 0.6rem 1rem;">
+    <small> This Item add to yout cart !! <b>{{prodQuantity}}</b> units
+      <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+        style="padding: 1rem;"></button> -->
+    </small>
   </div>
   <div style="position: relative;">
     <div class="d-flex justify-content-center align-items-center">
@@ -15,22 +18,28 @@
     </div>
     <h5 class="fw-bolder">{{product?.name}}</h5>
     <p>{{product?.modal}}</p>
-    <h5 class="text-danger fw-bolder">{{product?.price}} BDT</h5>
+    <h5 class="text-danger" *ngIf="!product.offerCol">{{product.price}} BDT</h5>
+    <h5 class="text-secondary" *ngIf="product.offerCol"><del>{{product.price}} BDT</del></h5>
+    <h5 class="text-danger" *ngIf="product.offerCol">{{product.offerPrice}} BDT</h5>
     <p class="text-muted">
       {{product?.des}}
     </p>
     <div class="mb-3 d-flex justify-content-center align-items-center">
-      <button class="btn btn-secondary rounded-circle mr-2" type="button" (click)="incrementCartProd()"><i class="fas fa-plus"></i></button>
-      <input  style="padding:10px 0px;border: none;background-color: ghostwhite;color:black;font-weight: bolder;" type="text" class="mx-4" placeholder=""
-         [ngModel]="prodQuantity" class="text-center" readonly>
-      <button class="btn btn-secondary rounded-circle ml-2" type="button"  (click)="decrementCartProd()"> <i class="fas fa-minus"></i></button>
+      <button class="btn btn-secondary rounded-circle mr-2" type="button" (click)="incrementCartProd()"><i
+          class="fas fa-plus"></i></button>
+      <input style="padding:10px 0px;border: none;background-color: ghostwhite;color:black;font-weight: bolder;"
+        type="text" class="mx-4" placeholder="" [ngModel]="prodQuantity" class="text-center" readonly>
+      <button class="btn btn-secondary rounded-circle ml-2" type="button" (click)="decrementCartProd()"> <i
+          class="fas fa-minus"></i></button>
     </div>
     <div class="">
       <div class="d-grid gap-2">
-        <button class="btn" [ngClass]="!isInTheCart?'btn-primary':'btn-success'" type="button" style="padding: 6px 30px;" (click)="addToCart(product)">
+        <button class="btn" [ngClass]="!isInTheCart?'btn-primary':'btn-success'" type="button"
+          style="padding: 6px 30px;" (click)="addToCart(product)">
           <i class="fas fa-shopping-basket"></i> {{!isInTheCart?'Add to cart':'Add more'}}
         </button>
-        <button class="btn btn-outline-danger" type="button" style="padding: 6px 30px;" (click)="removeCartProd()" *ngIf="isInTheCart">
+        <button class="btn btn-outline-danger" type="button" style="padding: 6px 30px;" (click)="removeCartProd()"
+          *ngIf="isInTheCart">
           <i class="far fa-trash-alt"></i> Delete Item
         </button>
       </div>

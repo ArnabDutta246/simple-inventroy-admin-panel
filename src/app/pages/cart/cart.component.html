@@ -1,167 +1,205 @@
 <app-header></app-header>
 <main class="bg-light pt-2 pt-lg-4 mt-5">
-    <div class="container p-2 mt-lg-5 pt-lg-5">
-      <!-- Breadcrumb -->
-      <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'Your cart',url:null}]" [pageTitle]="'Your Cart'"></app-breadcrumb>
-<!--  -->
+  <div class="container p-2 mt-lg-5 pt-lg-5">
+    <!-- Breadcrumb -->
+    <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'Your cart',url:null}]" [pageTitle]="'Your Cart'">
+    </app-breadcrumb>
+    <!--  -->
 
-      <!-- header panel -->
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" *ngIf="!emptyCart">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Products List</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pills-profile-tab" #profileTab [disabled]="profileSec" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Delivery Address</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pills-contact-tab" #summaryTab [disabled]="summarySec" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Order</button>
-        </li>
-      </ul>
-      <!-- conteiner -->
-      <div class="tab-content" id="pills-tabContent" *ngIf="!emptyCart">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <!-- ======== [ Cart section  ] ======== -->
-      <div class="row">
-        <!-- ======== [ Total section ] ======== -->
-        <div class="col-12 col-lg-4 col-md-6">
-          <div class="card p-2 mb-3">
-            <div class="card-header">
-              <h5>Order Summery</h5>
+    <!-- header panel -->
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" *ngIf="!emptyCart">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+          type="button" role="tab" aria-controls="pills-home" aria-selected="true">Products List</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-profile-tab" #profileTab [disabled]="profileSec" data-bs-toggle="pill"
+          data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+          aria-selected="false">Delivery Address</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-contact-tab" #summaryTab [disabled]="summarySec" data-bs-toggle="pill"
+          data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+          aria-selected="false">Order</button>
+      </li>
+    </ul>
+    <!-- conteiner -->
+    <div class="tab-content" id="pills-tabContent" *ngIf="!emptyCart">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <!-- ======== [ Cart section  ] ======== -->
+        <div class="row">
+          <!-- ======== [ Total section ] ======== -->
+          <div class="col-12 col-lg-4 col-md-6">
+            <div class="card p-2 mb-3">
+              <div class="card-header">
+                <h5>Order Summery</h5>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <p class="">Items Add</p>
+                <p class="">{{cartProd?.length}}</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <p class="">Total</p>
+                <p class="">{{totalPrice}} BDT</p>
+              </div>
+              <button class="btn btn-warning btn-sm" (click)="proceedToProfile()">Order Proceed <i
+                  class="fas fa-angle-double-right ml-2"></i></button>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-1">
-              <p class="">Items Add</p>
-              <p class="">{{cartProd?.length}}</p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-1">
-              <p class="">Total</p>
-              <p class="">{{totalPrice}} BDT</p>
-            </div>
-            <button class="btn btn-warning btn-sm" (click)="proceedToProfile()">Order Proceed <i class="fas fa-angle-double-right ml-2"></i></button>
           </div>
-      </div>
-        <div class="col-12 col-lg-8 col-md-6">
-            <div class="card" *ngFor="let cart of cartProd">
-                <div class="card-body">
+          <div class="col-12 col-lg-8 col-md-6">
+            <div class="card my-1" *ngFor="let cart of cartProd">
+              <div class="card-body p-0">
+                <div class="row m-0">
+                  <div class="col-4 col-lg-2 p-2 border-end">
+                    <img [src]="cart?.image" alt="" srcset="" style="height:90px;width:90px;object-fit: cover;">
+                  </div>
+                  <div class="col-8 col-lg-7 p-2 border-end">
+                    <h5>{{cart?.name}}</h5>
+                    <p class="m-0 text-medium">{{cart?.modal}}</p>
+                    <p class="fw-bold" *ngIf="!cart?.offerPrice">{{cart?.price}} Bdt/Unit</p>
+                    <p class="fw-bold" *ngIf="cart?.offerPrice">{{cart?.offerPrice}} Bdt/Unit</p>
+                  </div>
+                  <div class="col-12 col-lg-3 py-1">
                     <div class="row">
-                        <div class="col-3 p-2">
-                          <img [src]="cart?.image" alt="" srcset=""   
-                          style="height:120px;">
+                      <div class="col-12">
+                        <button class="btn btn-sm btn-outline-danger" (click)="removeCartProd(cart)">
+                          <i class="far fa-trash-alt"></i> Remove
+                        </button>
+                      </div>
+                      <div class="col-6 col-lg-12 bg-light mt-1">
+                        <div class="">
+                          <small>Total</small>
+                          <p class="m-0 text-success">
+                            {{cart?.offerPrice ? cart?.offerPrice * cart?.quantity :cart?.price * cart?.quantity}} BDT
+                          </p>
                         </div>
-                        <div class="col-5 p-2">
-                          <h4>{{cart?.name}}</h4>
-                          <p class="m-0 text-medium">{{cart?.modal}}</p>
-                          <p class="fw-bold">{{cart?.price}} Bdt/Unit</p>
-                          <button class="btn btn-sm btn-outline-danger" (click)="removeCartProd(cart)">
-                              <i class="far fa-trash-alt"></i> Remove Item
-                          </button>
-                        </div>
-                        <div class="col-4">
-                            <small>Total</small>
-                            <h3 class="m-0 text-success">
-                                {{cart?.price * cart?.quantity}} BDT
-                            </h3><br> <br>
-                            <div class="d-flex justify-content-start align-items-center">
-                                <button class="btn btn-sm btn-secondary rounded-circle mr-2 px-2 py-1" (click)="incrementCartProd(cart)"> <i class="fas fa-plus"></i> </button>
-                                <div>
-                                    <p class="mx-3 my-2">{{cart?.quantity}}</p>
-                                </div> 
-                                <button class="btn btn-sm btn-secondary rounded-circle px-2 py-1 ml-2" (click)="decrementCartProd(cart)"> <i class="fas fa-minus"></i> </button>
+                      </div>
+                      <div class="col-6 col-lg-12 bg-light">
+                        <div class="">
+                          <div class="d-flex justify-content-start align-items-center">
+                            <button class="btn btn-sm btn-secondary rounded-circle mr-2 px-2 py-1"
+                              (click)="incrementCartProd(cart)"> <i class="fas fa-plus"></i> </button>
+                            <div>
+                              <p class="mx-3 my-2">{{cart?.quantity}}</p>
                             </div>
+                            <button class="btn btn-sm btn-secondary rounded-circle px-2 py-1 ml-2"
+                              (click)="decrementCartProd(cart)"> <i class="fas fa-minus"></i> </button>
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-           <div class="container p-3">
-             <div class="row">
-               <div class="col-12 col-md-9   ">
-                <h4 class="fw-bolder">Your Delivery Information</h4>
-                <p class="text-primary">Please your proper information on delivery related where your order will be placed</p>
-                <div class="alert alert-danger fade show" role="alert" *ngIf="isWrong" style="margin-bottom:0;padding: 0.6rem 1rem;">
-                  <small> Some Information is missing !! please enter your proper delivery information. <b>{{prodQuantity}}</b> units
-                   <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 1rem;"></button> -->
-                 </small>
-                 </div>
-                <div class="mb-3">
-                 <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your name" [(ngModel)]="name">
-               </div>
-               <div class="mb-3">
-                 <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
-                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your contact number" [(ngModel)]="phone">
-               </div>
-               <div class="mb-3">
-                 <label for="exampleFormControlTextarea1" class="form-label" placeholder="Enter your delivery address here..">Delivery Address</label>
-                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="address"></textarea>
-               </div>
-               <button class="btn btn-warning btn-sm" (click)="proceedToSummary()">Placed Order<i class="fas fa-angle-double-right mx-2"></i></button>
-               </div>
-               <div class="col-12 col-md-3">
-                <div class="card p-2">
-                  <div class="card-header">
-                    <h5>Order Summery</h5>
                   </div>
-                  <div class="d-flex justify-content-between align-items-center mb-1">
-                    <p class="">Items Add</p>
-                    <p class="">{{cartProd?.length}}</p>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center mb-1">
-                    <p class="">Total</p>
-                    <p class="">{{totalPrice}} BDT</p>
-                  </div>
-                  <!-- <button class="btn btn-warning btn-sm" (click)="proceedToProfile()">Order Proceed <i class="fas fa-angle-double-right ml-2"></i></button> -->
-                </div>
-              </div>
-             </div>
-           </div>
-        </div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-          <div class="container">
-            <h3>Review Order</h3>
-            <p>Please check your address and products once before proceed</p>
-            <div class="row">
-              <div class="col-12 col-md-6 mb-2">
-                <div class="card p-4">
-                  <h5>Your Delivery Address</h5>
-                  <div>{{name}}</div>
-                  <div>{{phone}}</div>
-                  <div>{{address}}</div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="card p-2">
-                  <div class="card-header">
-                    <h5>Order Summery</h5>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center mb-1">
-                    <p class="">Items Add</p>
-                    <p class="">{{cartProd?.length}}</p>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center mb-1">
-                    <p class="">Total</p>
-                    <p class="">{{totalPrice}} BDT</p>
-                  </div>
-                  <button class="btn btn-success btn-sm" (click)="placedOrder()">Placed Order<i class="fas fa-angle-double-right mx-2"></i></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
- 
-<!--  -->
-      <div class="empty-cart d-flex flex-column justify-content-center align-items-center pt-4 pb-4 mt-5 mb-5 bg-light" *ngIf="emptyCart">
-        <img src="https://img.icons8.com/ios/50/000000/shopping-bag--v1.png" style="height: 75px;" /> <br>
-        <div>
-            <p class="text-dark">Cart is empty. you haven't added any products now.</p>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="container p-3">
+          <div class="row">
+            <div class="col-12 col-md-9">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="fw-bolder">Your Delivery Information</h4>
+                  <p class="text-primary">Please your proper information on delivery related where your order will be
+                    placed
+                  </p>
+                  <div class="alert alert-danger fade show" role="alert" *ngIf="isWrong"
+                    style="margin-bottom:0;padding: 0.6rem 1rem;">
+                    <small> Some Information is missing !! please enter your proper delivery information.
+                      <b>{{prodQuantity}}</b> units
+                      <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 1rem;"></button> -->
+                    </small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your name"
+                      [(ngModel)]="name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                      placeholder="Your contact number" [(ngModel)]="phone">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label"
+                      placeholder="Enter your delivery address here..">Delivery
+                      Address</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                      [(ngModel)]="address"></textarea>
+                  </div>
+                  <button class="btn btn-warning btn-sm" (click)="proceedToSummary()">Placed Order<i
+                      class="fas fa-angle-double-right mx-2"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="card p-2">
+                <div class="card-header">
+                  <h5>Order Summery</h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <p class="">Items Add</p>
+                  <p class="">{{cartProd?.length}}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <p class="">Total</p>
+                  <p class="">{{totalPrice}} BDT</p>
+                </div>
+                <!-- <button class="btn btn-warning btn-sm" (click)="proceedToProfile()">Order Proceed <i class="fas fa-angle-double-right ml-2"></i></button> -->
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="btn btn-sm btn-warning px-2" (click)="goToProductsPage()"><i class="fas fa-shopping-basket mx-2"></i> Continue Shopping</button>
+      </div>
+      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div class="container">
+          <h3>Review Order</h3>
+          <p>Please check your address and products once before proceed</p>
+          <div class="row">
+            <div class="col-12 col-md-6 mb-2">
+              <div class="card p-4">
+                <h5>Your Delivery Address</h5>
+                <div>{{name}}</div>
+                <div>{{phone}}</div>
+                <div>{{address}}</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="card p-2">
+                <div class="card-header">
+                  <h5>Order Summery</h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <p class="">Items Add</p>
+                  <p class="">{{cartProd?.length}}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <p class="">Total</p>
+                  <p class="">{{totalPrice}} BDT</p>
+                </div>
+                <button class="btn btn-success btn-sm" (click)="placedOrder()">Placed Order<i
+                    class="fas fa-angle-double-right mx-2"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-</main>      
+
+    <!--  -->
+    <div class="empty-cart d-flex flex-column justify-content-center align-items-center pt-4 pb-4 mt-5 mb-5 bg-light"
+      *ngIf="emptyCart">
+      <img src="https://img.icons8.com/ios/50/000000/shopping-bag--v1.png" style="height: 75px;" /> <br>
+      <div>
+        <p class="text-dark text-center">Cart is empty. you haven't added any products now.</p>
+      </div>
+      <button class="btn btn-sm btn-warning px-2" (click)="goToProductsPage()"><i
+          class="fas fa-shopping-basket mx-2"></i> Continue Shopping</button>
+    </div>
+  </div>
+</main>
 
 <div class="my-3"></div>
-<app-footer></app-footer>     
+<app-footer></app-footer>
