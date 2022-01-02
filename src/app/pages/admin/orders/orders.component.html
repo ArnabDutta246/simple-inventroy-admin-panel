@@ -1,0 +1,98 @@
+<div class="container py-3">
+  <div class="card">
+    <div class="card-header bg-primary">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          Orders places {{selectedDate | date:"mediumDate"}}
+        </div>
+        <input type="date" name="" id="" [(ngModel)]="selectedDate">
+      </div>
+    </div>
+    <div class="card-body pt-0">
+      <!-- header -->
+      <div class="row bg-light">
+        <div class="col-1">
+          Serial
+        </div>
+        <div class="col-2">
+          Customer Info
+        </div>
+        <div class="col-2">
+          Mobile
+        </div>
+        <div class="col-3">
+          Address
+        </div>
+        <div class="col-3">
+          Item
+        </div>
+
+        <div class="col-1">
+          Actions
+        </div>
+      </div>
+      <!-- body -->
+      <div class="row py-1" *ngFor="let order of allOrders;let i=index" [class]="i%2==0?'bg-light':'bg-white'">
+        <div class="col-1 text-center">
+          <small>{{i+1}}</small>
+        </div>
+        <div class="col-2">
+          <div><small>{{order.name}}</small></div>
+        </div>
+        <div class="col-2">
+          <div><small>{{order.phone}}</small></div>
+        </div>
+        <div class="col-3">
+          <div><small>{{order.address}}</small></div>
+        </div>
+        <div class="col-3">
+          <ul>
+            <li *ngFor="let cart of order.cart">{{cart.name}} ({{cart.quantity}} pieces)</li>
+          </ul>
+        </div>
+
+        <div class="col-1">
+          <button class="btn btn-primary btn-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightOrderDetails"
+            aria-controls="offcanvasRightOrderDetails" (click)="selectedOrder(order)">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightOrderDetails"
+  aria-labelledby="offcanvasRightOrderDetailsLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightOrderDetailsLabel">Order Details</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="card">
+      <div class="card-body">
+        <h5>{{selectedOrderDetails?.name}}</h5>
+        <p class="m-0">{{selectedOrderDetails?.phone}}</p>
+        <p>{{selectedOrderDetails?.address}}</p>
+      </div>
+    </div>
+    <p class="m-0 my-1">Items List</p>
+    <table class="table">
+      <thead class="bg-dark text-white">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cart of selectedOrderDetails?.cart;let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>
+            {{cart.name}}
+            <p class="text-muted">{{cart.model}}</p>
+            <p>{{cart.quantity}} * {{cart.offerCol?cart.offerPrice:cart.price}} Tk</p>
+          </td>
+          <td>{{cart.quantity * (cart.offerCol?cart.offerPrice:cart.price)}} Tk</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

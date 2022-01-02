@@ -1,94 +1,105 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/interface/interfaces';
 import { ProductsService } from 'src/app/shared/products/products.service';
-import { AngularFireStorage } from "@angular/fire/storage";
-import { map, finalize } from "rxjs/operators";
-import { Observable } from "rxjs";
+import { AngularFireStorage } from '@angular/fire/storage';
+import { map, finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  @ViewChild('userPhoto',{ read: ElementRef }) userPhoto: ElementRef;
-  @ViewChild('prodList',{ read: ElementRef }) prodList: ElementRef;
-  @ViewChild('addProd',{ read: ElementRef }) addProd: ElementRef;
+  @ViewChild('userPhoto', { read: ElementRef }) userPhoto: ElementRef;
+  @ViewChild('prodList', { read: ElementRef }) prodList: ElementRef;
+  @ViewChild('addProd', { read: ElementRef }) addProd: ElementRef;
   // variables
-  extraData:any;
+  extraData: any;
   allCategories = [];
   allBrands = [];
-  productsLimit:number = 40;
-  productsList:Product[] = [];
-  selectedProd:Product;
-  addProdPanel:boolean = false;
-  editMode:boolean = false;
+  productsLimit: number = 40;
+  productsList: Product[] = [];
+  selectedProd: Product;
+  addProdPanel: boolean = false;
+  editMode: boolean = false;
   //
-  id:any|null = null;
-  name:string|null = null;
-  brand:string|null = null;
-  price:number|null = null;
-  des:string|null = null;
-  quantity:number = 1;
-  category:string|null = null;
-  featureCol:boolean = false;
-  latestCol:boolean = false;
-  offerCol:boolean = false;
-  offerPrice:number|null = null;
-  docId:string|null = null;
+  id: any | null = null;
+  name: string | null = null;
+  brand: string | null = null;
+  price: number | null = null;
+  des: string | null = null;
+  quantity: number = 1;
+  category: string | null = null;
+  featureCol: boolean = false;
+  latestCol: boolean = false;
+  offerCol: boolean = false;
+  offerPrice: number | null = null;
+  docId: string | null = null;
   //
-  isWrong:boolean = false;
-  errMsgDef = "Some Information is missing !! please enter your proper product information.";
-  errMsg:string = "Some Information is missing !! please enter your proper product information.";
-  isUpdated:boolean = false;
+  isWrong: boolean = false;
+  errMsgDef =
+    'Some Information is missing !! please enter your proper product information.';
+  errMsg: string =
+    'Some Information is missing !! please enter your proper product information.';
+  isUpdated: boolean = false;
   // file
   selectedFile: File = null;
   fb;
   downloadURL: Observable<string>;
-  constructor(private productServ:ProductsService,private storage: AngularFireStorage) { }
+  categoryChoose: string = '';
+  constructor(
+    private productServ: ProductsService,
+    private storage: AngularFireStorage
+  ) {}
 
   ngOnInit(): void {
-  this.fetchAllProducts();
-  // get extra data
-  this.getExtraData();
-  }
+    this.fetchAllProducts();
     // get extra data
-    getExtraData(){
-      this.allCategories = [];
-      this.allBrands = [];
-      this.productServ.getExtras().then(res=>{
-        let data:any = res.data();
+    this.getExtraData();
+  }
+  // get extra data
+  getExtraData() {
+    this.allCategories = [];
+    this.allBrands = [];
+    this.productServ
+      .getExtras()
+      .then((res) => {
+        let data: any = res.data();
         this.allCategories = data.categories;
         this.allBrands = data.brands;
         this.extraData = data;
-        console.log("extras data",data.categories);
-        this.productServ.loaderUpdate(false);
-      }).catch(err=>{
+        this.categoryChoose = this.categoryChoose ? this.categoryChoose : null;
+        //console.log('extras data', data.categories);
         this.productServ.loaderUpdate(false);
       })
-    }
+      .catch((err) => {
+        this.productServ.loaderUpdate(false);
+      });
+  }
   // fetch all products
-  fetchAllProducts(){
-   this.productServ.loaderUpdate(true);
-   this.isUpdated = false;
-   this.isWrong = false;
-   this.editMode = false;
-   this.addProdPanel = false;
-   this.productsList = [];
-   this.productServ.getProductAdmin(this.productsLimit).then(
-     res=>{
-       console.log(res);
-       this.productsList = res;
-       this.productServ.loaderUpdate(false);
-     }
-   ).catch(err=>{
-     this.productsList = [];
-     this.productServ.loaderUpdate(false);
-   })
+  fetchAllProducts() {
+    this.productServ.loaderUpdate(true);
+    this.isUpdated = false;
+    this.isWrong = false;
+    this.editMode = false;
+    this.addProdPanel = false;
+    this.productsList = [];
+    this.productServ
+      .getProductAdmin(this.productsLimit)
+      .then((res) => {
+        console.log(res);
+        this.productsList = res;
+        this.productServ.loaderUpdate(false);
+      })
+      .catch((err) => {
+        this.productsList = [];
+        this.productServ.loaderUpdate(false);
+      });
   }
 
   // switch to add prod section
-  switchToAddSection(editProd:Product|null = null){
-    if(editProd){
+  switchToAddSection(editProd: Product | null = null) {
+    if (editProd) {
       this.selectedProd = editProd;
     }
     this.addProdPanel = true;
@@ -96,71 +107,86 @@ export class ProductComponent implements OnInit {
   }
 
   // submit prod
-  submitProd(){
-    console.log("Object here",this.setProd());
-   if(this.fb){ 
-    if(this.name && this.brand && this.category && this.price && this.quantity >= 1 && this.des){
-      if(this.offerCol && (this.offerPrice  == 0 || this.offerPrice > this.price)){
-        return;
-      }else{
-        this.isWrong = false;
-        let data = this.setProd();
-        if(!this.editMode){
-          return this.productServ.addNewProduct(data).then(res=>{
-            console.log("prod inserted",res);
-            this.isUpdated = true;
-            // reset
-            this.resetAll();
-          }).catch(err=>{
-            this.isWrong = true;
-            this.errMsg = "Somethings went wrong !!! Please Try again";
-          });
-      }else{
-          return this.productServ.updateProduct(data,this.docId).then(res=>{
-            console.log("prod inserted",res);
-            this.isUpdated = true;
-            // reset
-            this.resetAll();
-          }).catch(err=>{
-            console.log(err);
-            this.isWrong = true;
-            this.errMsg = "Somethings went wrong !!! Please Try again";
-          });
+  submitProd() {
+    console.log('Object here', this.setProd());
+    if (this.fb) {
+      if (
+        this.name &&
+        this.brand &&
+        this.category &&
+        this.price &&
+        this.quantity >= 1 &&
+        this.des
+      ) {
+        if (
+          this.offerCol &&
+          (this.offerPrice == 0 || this.offerPrice > this.price)
+        ) {
+          return;
+        } else {
+          this.isWrong = false;
+          let data = this.setProd();
+          if (!this.editMode) {
+            return this.productServ
+              .addNewProduct(data)
+              .then((res) => {
+                // console.log('prod inserted', res);
+                this.isUpdated = true;
+                // reset
+                this.resetAll();
+              })
+              .catch((err) => {
+                this.isWrong = true;
+                this.errMsg = 'Somethings went wrong !!! Please Try again';
+              });
+          } else {
+            return this.productServ
+              .updateProduct(data, this.docId)
+              .then((res) => {
+                // console.log('prod inserted', res);
+                this.isUpdated = true;
+                // reset
+                this.resetAll();
+              })
+              .catch((err) => {
+                // console.log(err);
+                this.isWrong = true;
+                this.errMsg = 'Somethings went wrong !!! Please Try again';
+              });
+          }
+        }
+      } else {
+        this.isWrong = true;
       }
-        
-      }
-    }else{
+    } else {
       this.isWrong = true;
     }
-   }else{
-    this.isWrong = true;
-   }
   }
 
-  setProd(product?:Product){
-   let prod:Product = {
-    id:this.id,
-    name:this.name,
-    brand:this.brand,
-    price:this.price,
-    des:this.des,
-    quantity:this.quantity,
-    category:this.category,
-    featureCol:this.featureCol,
-    latestCol:this.latestCol,
-    offerCol:this.offerCol,
-    offerPrice:this.offerPrice,
-    image:this.fb,
-    modal:this.category+this.id,
-   };
+  setProd(product?: Product) {
+    let prod: Product = {
+      id: this.id,
+      name: this.name,
+      brand: this.brand,
+      price: this.price,
+      des: this.des,
+      quantity: this.quantity,
+      category: this.category,
+      featureCol: this.featureCol,
+      latestCol: this.latestCol,
+      offerCol: this.offerCol,
+      offerPrice: this.offerPrice,
+      image: this.fb,
+      modal: this.category + this.id,
+    };
 
-   return prod;
+    return prod;
   }
 
   // file upload
   onFileSelected(event) {
     this.productServ.loaderUpdate(true);
-    this.id = this.id? this.id: Date.now();   
+    this.id = this.id ? this.id : Date.now();
     const file = event.target.files[0];
     const filePath = `ProductsImages/${this.id}`;
     const fileRef = this.storage.ref(filePath);
@@ -170,26 +196,28 @@ export class ProductComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
+          this.downloadURL.subscribe((url) => {
             if (url) {
               this.fb = url;
             }
-            console.log(this.fb);
+            //  console.log(this.fb);
           });
         })
       )
-      .subscribe(url => {
-        if (url) {
-          console.log(url);
+      .subscribe(
+        (url) => {
+          if (url) {
+            // console.log(url);
+            this.productServ.loaderUpdate(false);
+          }
+        },
+        (err) => {
           this.productServ.loaderUpdate(false);
         }
-        
-      },err=>{
-        this.productServ.loaderUpdate(false);
-      });
+      );
   }
   // reset all
-  resetAll(){
+  resetAll() {
     this.id = null;
     this.name = null;
     this.brand = null;
@@ -207,9 +235,9 @@ export class ProductComponent implements OnInit {
     this.userPhoto.nativeElement.value = '';
   }
   // edit product
-  editProductData(prod){
-    console.log("prod",prod);
-   // this.setProd(prod);
+  editProductData(prod) {
+    console.log('prod', prod);
+    // this.setProd(prod);
     this.id = prod.id;
     this.name = prod.name;
     this.brand = prod.brand;
@@ -227,7 +255,34 @@ export class ProductComponent implements OnInit {
     this.switchToAddSection();
   }
   // delete prod
-  deleteProd(prod){
+  deleteProd(prod) {
     this.productServ.deleteProdcut(prod);
+  }
+  // get products
+  getAllProducts(cat: string = '') {
+    //console.log('category changes:', cat);
+    // this.products = this.db.products;
+    this.productServ.loaderUpdate(true);
+    this.isUpdated = false;
+    this.isWrong = false;
+    this.editMode = false;
+    this.addProdPanel = false;
+    this.productsList = [];
+    this.productServ
+      .getClientsProducts([
+        {
+          field: 'category',
+          operator: '==',
+          value: cat,
+        },
+      ])
+      .then((res) => {
+        this.productsList = res;
+        this.productServ.loaderUpdate(false);
+      })
+      .catch((err) => {
+        // console.log(err);
+        this.productServ.loaderUpdate(false);
+      });
   }
 }

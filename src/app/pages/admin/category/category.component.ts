@@ -3,40 +3,47 @@ import { ProductsService } from 'src/app/shared/products/products.service';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
-  extraData:any;
+  extraData: any;
   allCategories = [];
-  name:string|null = null;
-  constructor(private productServ:ProductsService) { }
+  name: string | null = null;
+  constructor(private productServ: ProductsService) {}
 
   ngOnInit(): void {
     // get extra data
     this.getExtraData();
   }
-    // get extra data
-    getExtraData(){
-      this.allCategories = [];
-      this.productServ.getExtras().then(res=>{
-        let data:any = res.data();
-        this.allCategories = data.categories?data.categories:[];
+  // get extra data
+  getExtraData() {
+    this.productServ.loaderUpdate(true);
+    this.allCategories = [];
+    this.productServ
+      .getExtras()
+      .then((res) => {
+        let data: any = res.data();
+        this.allCategories = data.categories ? data.categories : [];
         this.extraData = data;
-        console.log("extras data",data.categories);
+        console.log('extras data', data.categories);
+        this.productServ.loaderUpdate(false);
       })
+      .catch((err) => {
+        this.productServ.loaderUpdate(false);
+      });
+  }
+  submitBrand() {
+    if (this.name) {
+      this.extraData.categories = [...this.allCategories, this.name];
+      this.productServ.addBrandOrCategory(this.extraData).then((res) => {
+        this.getExtraData();
+      });
     }
-  submitBrand(){
-    if(this.name){
-    this.extraData.categories = [...this.allCategories,this.name];
-    this.productServ.addBrandOrCategory(this.extraData).then(res=>{
-      this.getExtraData();
-    });
   }
-  }
-  deleteBrand(cat){
-    this.allCategories = this.allCategories.filter(b=>b !== cat);
+  deleteBrand(cat) {
+    this.allCategories = this.allCategories.filter((b) => b !== cat);
     this.extraData.categories = this.allCategories;
-    this.productServ.addBrandOrCategory(this.extraData).then(res=>{
+    this.productServ.addBrandOrCategory(this.extraData).then((res) => {
       this.getExtraData();
     });
   }

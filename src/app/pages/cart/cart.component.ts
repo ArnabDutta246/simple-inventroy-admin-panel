@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import firebase from 'firebase/app';
 import { Subscription } from 'rxjs';
 import { Cart } from 'src/app/interface/interfaces';
 import { CartService } from 'src/app/shared/cart/cart.service';
@@ -31,6 +32,7 @@ export class CartComponent implements OnInit, OnDestroy {
   phone: any;
   address: string;
   isWrong: boolean = false;
+  firebase = firebase;
   constructor(
     private cartServ: CartService,
     private router: Router,
@@ -50,6 +52,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.totalPrice = 0;
     this.cartObs$ = this.cartServ.getAllCartProduct().subscribe((res) => {
       if (res.length) {
+        console.log('cart', res);
         this.emptyCart = false;
         this.cartProd = res;
         this.cartProd.forEach((c) => {
@@ -60,7 +63,7 @@ export class CartComponent implements OnInit, OnDestroy {
           }
         });
 
-        console.log('total price', this.cartProd, this.totalPrice);
+        // console.log('total price', this.cartProd, this.totalPrice);
       } else {
         this.emptyCart = true;
       }
@@ -116,13 +119,17 @@ export class CartComponent implements OnInit, OnDestroy {
     }
   }
   placedOrder() {
+    delete this.cartProd['des'];
     let data = {
       name: this.name,
       phone: this.phone,
       address: this.address,
       cart: this.cartProd,
+      date: firebase.firestore.FieldValue.serverTimestamp(),
     };
-    console.log('finaalize the order: ', data);
-    // this.productSer.placedOrder();
+    // console.log('finaalize the order: ', data);
+    this.productSer.placedOrder(data).then((res) => {
+      this.cartServ.updateCart([]);
+    });
   }
 }

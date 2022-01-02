@@ -35,14 +35,14 @@ export class ProductDetailsComponent implements OnInit, OnChanges, OnDestroy {
     this.getCartData();
   }
   ngOnDestroy() {
-    this.carts$.unsubscribe();
+    //this.carts$.unsubscribe();
     this.prodQuantity = 1;
     this.isInTheCart = false;
     this.showAlert = false;
   }
   ngOnChanges() {
     this.showAlert = false;
-    this.carts$.unsubscribe();
+    // this.carts$.unsubscribe();
     this.prodQuantity = 1;
     this.isInTheCart = false;
     this.getCartData();

@@ -20,57 +20,64 @@
       </div>
       <div class="col-12 col-lg-4">
         <!-- counting -->
-        <nav aria-label="..." *ngIf="!addProdPanel">
-          <ul class="pagination pagination-sm justify-content-end">
+        <div *ngIf="!addProdPanel">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="categoryChoose"
+            (ngModelChange)="getAllProducts(categoryChoose)">
+            <option value="null">Select Category</option>
+            <option [value]="cat" *ngFor="let cat of extraData?.categories">{{cat}}</option>
+          </select>
+          <!-- <ul class="pagination pagination-sm justify-content-end">
             <li class="page-item active" aria-current="page">
               <span class="page-link">1-40</span>
             </li>
             <li class="page-item"><a class="page-link" href="#">41-80</a></li>
             <li class="page-item"><a class="page-link" href="#">81-120</a></li>
-          </ul>
-        </nav>
+          </ul> -->
+        </div>
       </div>
     </div>
 
     <div class="tab-content" id="pills-tabContent">
       <!-- all Products Panel -->
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        <div *ngIf="productsList.length > 0">
-          <div class="row border-bottom py-2" *ngFor="let prod of productsList">
-            <div class="col-2 border-end">
-              <div>
-                <img [src]="prod?.image" [alt]="prod?.name" srcset="" style="height: 45px;">
-              </div>
-            </div>
-            <div class="col-5 col-lg-6 p-2 text-align-left">
-              <h5>{{ prod?.name}}</h5>
-              <p class="m-0">Brand by {{prod?.brand}}</p>
-            </div>
-            <div class="col-5 col-lg-4">
-              <div class="row">
-                <div class="col-12 col-lg-6">
-                  <p class="m-0">{{prod?.quantity}} unit/ {{prod?.price}} BDT</p>
-                  <p class="m-0 text-warning" *ngIf="prod?.offerCol">Offer: {{prod?.quantity}} unit/
-                    {{prod?.offerPrice}} BDT
-                  </p>
+        <div class="card">
+          <div *ngIf="productsList.length > 0">
+            <div class="row border-bottom py-2" *ngFor="let prod of productsList">
+              <div class="col-2 border-end">
+                <div class="text-center">
+                  <img [src]="prod?.image" [alt]="prod?.name" srcset="" style="height: 45px;">
                 </div>
-                <div class="col-12 col-lg-6">
-                  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button type="button" class="btn btn-warning" (click)="editProductData(prod)"><i
-                        class="far fa-edit mx-1"></i> Edit</button>
-                    <button type="button" class="btn btn-danger" (click)="deletProd()"><i
-                        class="fas fa-trash-alt mx-1"></i> Delete</button>
+              </div>
+              <div class="col-5 col-lg-4 p-2 text-align-left border-end">
+                <h5>{{ prod?.name}}</h5>
+                <p class="m-0">Brand by {{prod?.brand}}</p>
+              </div>
+              <div class="col-5 col-lg-6">
+                <div class="row">
+                  <div class="col-12 col-lg-6">
+                    <p class="m-0">{{prod?.quantity}} unit/ {{prod?.price}} BDT</p>
+                    <p class="m-0 text-warning" *ngIf="prod?.offerCol">Offer: {{prod?.quantity}} unit/
+                      {{prod?.offerPrice}} BDT
+                    </p>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" class="btn btn-warning btn-sm" (click)="editProductData(prod)"><i
+                          class="far fa-edit mx-1"></i> Edit</button>
+                      <button type="button" class="btn btn-danger btn-sm" (click)="deletProd()"><i
+                          class="fas fa-trash-alt mx-1"></i> Delete</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- if empty -->
-        <div class="card" *ngIf="productsList.length == 0">
-          <div class="card-body d-flex flex-column justify-content-center align-items-center">
-            <h5>No Products Added Yet</h5>
-            <button class="btn btn-sm btn-success" (click)="switchToAddSection()">Add New Product</button>
+          <!-- if empty -->
+          <div class="card" *ngIf="productsList.length == 0">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+              <h5>No Products Added Yet</h5>
+              <button class="btn btn-sm btn-success" (click)="switchToAddSection()">Add New Product</button>
+            </div>
           </div>
         </div>
       </div>

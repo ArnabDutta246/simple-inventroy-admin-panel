@@ -104,4 +104,9 @@ export class ProductsService {
       docObject
     );
   }
+  getOrders() {
+    return this.database.getAllDocumentsSnapshot(
+      this.database.allCollections.orders
+    );
+  }
 }
