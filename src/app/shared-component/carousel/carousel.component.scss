@@ -1,17 +1,15 @@
-#brands-slider{
-
-    .card{
-        margin: 3px;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: transparent;
-        background: transparent;
-        img{
-            height:50px;
-            width: 120px;
-        }
+#brands-slider {
+  .card {
+    margin: 3px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: transparent;
+    background: transparent;
+    img {
+      height: 75px;
+      width: 150px;
     }
-
+  }
 }

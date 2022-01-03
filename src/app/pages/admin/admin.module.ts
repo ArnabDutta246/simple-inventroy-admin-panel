@@ -8,11 +8,11 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
-      {
-        path: 'ad-login',
-        loadChildren: () =>
-          import('./login/login.module').then((m) => m.LoginModule),
-      },
+      // {
+      //   path: 'ad-login',
+      //   loadChildren: () =>
+      //     import('./login/login.module').then((m) => m.LoginModule),
+      // },
       {
         path: 'ad-brand',
         loadChildren: () =>

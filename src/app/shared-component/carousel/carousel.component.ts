@@ -76,7 +76,7 @@ export class CarouselComponent implements OnInit, OnChanges {
     this.customOptions.responsive = {
       0: { items: 2 },
       400: { items: 2 },
-      740: { items: 4 },
+      740: { items: 5 },
       940: {
         items: 6,
       },

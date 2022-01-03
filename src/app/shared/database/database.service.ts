@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import firebase from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { BehaviorSubject } from 'rxjs';
 export interface QueryObj {
   field: any;
   operator: any;
@@ -28,7 +30,8 @@ export class DatabaseService {
     environment.firebaseConfig,
     'admin'
   );
-  constructor(public afs: AngularFirestore) {
+
+  constructor(public afs: AngularFirestore, public auth: AngularFireAuth) {
     // TBA
   }
   // create
