@@ -47,6 +47,8 @@ testem.log
 /firestore.indexes.json
 /firestore.rules
 /storage.rules
+.firebaserc
+.firebase
 # System Files
 .DS_Store
 Thumbs.db
