@@ -1,90 +1,137 @@
 <app-header></app-header>
 <main class="bg-light pt-2 pt-lg-4 mt-5">
-    <div class="container p-2 mt-lg-5 pt-lg-5">
-      <!-- Breadcrumb -->
-      <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'About Us',url:null}]" [pageTitle]="'About Us'"></app-breadcrumb>
+  <div class="container p-2 mt-lg-5 pt-lg-5">
+    <!-- Breadcrumb -->
+    <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'About Us',url:null}]" [pageTitle]="'About Us'">
+    </app-breadcrumb>
     <br><br>
-    <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-6 pt-4">
-        <img src="https://www.freepnglogos.com/uploads/original-samsung-logo-10.png" style="height: 190px;" alt="" srcset="">
-      </div>
-      <div class="col-12 col-md-6">
-        <h2 class="fw-bolder text-dark">Welcome Guest !!</h2>
-        <p class="text-muted lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat consequuntur non sunt.</p>
-        <p class="fst-italic">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt itaque quod nostrum fugiat vitae sunt asperiores totam quaerat, atque unde id, veritatis alias odit cum placeat eligendi delectus reprehenderit tempore sint! Facilis incidunt illum corporis sequi. Ratione aliquam at sunt aliquid. Omnis officiis, quia odio asperiores consequatur nobis error ab qui officia reiciendis molestias animi aliquid id quibusdam similique eum molestiae illo debitis iste mollitia? Sunt sint, autem reprehenderit hic distinctio, ullam odit, modi facere veniam fugiat quas dignissimos commodi? Iste, magni iure nobis minima ut voluptatem. Unde quod rerum, nemo odit ad vero quasi sequi, natus, ipsam omnis dicta.
-        </p>
-      </div>  
-    </div>
-  </div>
+    <div class="container shadow-sm bg-white py-2 pb-4">
+      <div class="p-2">
+        <div class="row">
+          <div class="col-12 col-md-4 pt-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <img src="../../../assets/img/skylight-removebg-preview.png" style="height: 190px;" alt="" srcset="">
+            </div>
+          </div>
+          <div class="col-12 col-md-8 p-2">
+            <h2 class="fw-bolder text-dark mt-2">Howladar Electronis</h2>
+            <p class="fst-italic text-justify" style="font-size: 16px;color: #818080;">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt itaque quod nostrum fugiat vitae sunt
+              asperiores
+              totam quaerat, atque unde id, veritatis alias odit cum placeat eligendi delectus reprehenderit tempore
+              sint!
+              Facilis incidunt illum corporis sequi. Ratione aliquam at sunt aliquid. Omnis officiis, quia odio
+              asperiores
+              consequatur nobis error ab qui officia reiciendis molestias animi aliquid id quibusdam similique eum
+              molestiae
+              illo debitis iste mollitia? Sunt sint, autem reprehenderit hic distinctio, ullam odit, modi facere veniam
+              fugiat
+              quas dignissimos commodi? Iste, magni iure nobis minima ut voluptatem. Unde quod rerum, nemo odit ad vero
+              quasi
+              sequi, natus, ipsam omnis dicta.
+            </p>
+          </div>
+        </div>
+
         <!-- ======= boss qoutes ======= -->
         <div class="container pt-5 pb-5">
-          <div class="card shadow p-4">
+          <div class="p-4">
             <div class="d-flex flex-column justify-content-center align-items-center">
-             <img class="image-fluid" style="max-height:100px" src="https://www.seekpng.com/png/detail/219-2190977_circle-profile-no-background-png-120dpi-page001-gentleman.png" alt="" srcset="">
-             <small>CEO,StarLight</small>
-             <span style="font-size: 14px;line-height: 22px;" class="lead"> <span style="font-weight: 900;font-size: 64px;">"</span>
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. A ut sunt explicabo maxime earum. <br>  Lorem ipsum dolor sit amet consectetur adipisicing elit. A ut sunt explicabo maxime earum.
-            </span>
+              <img class="image-fluid" style="max-height:100px"
+                src="https://www.seekpng.com/png/detail/219-2190977_circle-profile-no-background-png-120dpi-page001-gentleman.png"
+                alt="" srcset="">
+              <small>CEO,StarLight</small>
+              <span style="font-size: 14px;line-height: 22px;" class="lead"> <span
+                  style="font-weight: 900;font-size: 64px;">"</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. A ut sunt explicabo maxime earum. <br> Lorem
+                ipsum
+                dolor sit amet consectetur adipisicing elit. A ut sunt explicabo maxime earum.
+              </span>
             </div>
+          </div>
         </div>
-          <!-- ======== services ======== -->
-          <div class="container shadow-sm">
-            <div class="row mt-lg-4 mt-2 bg-white">
-              <div class="col-12 col-lg-4 col-md-6">
-                <div class="p-3">
-                  <div class="row">
-                    <div class="col-3">
-                      <img style="height:65px" src="https://img.icons8.com/color/48/000000/cash-.png"
-                        class="animate__animated animate__bounce animate__slow animate__infinite" />
-                    </div>
-                    <div class="col-9">
-                      <p class="m-0 fw-bold h5">Cash On Delivery</p>
-                      <small class="lead fs-6 text-muted">And 100% money back guarantee</small>
-                    </div>
+
+        <!-- ======== services ======== -->
+        <div class="container">
+          <div class="px-3 py-1 mt-5 d-flex flex-column justify-content-center align-items-center">
+
+            <h3 class="fw-bolder">Our Management
+            </h3>
+            <h3 class="fw-bolder text-danger">With Best Experience</h3>
+            <p class="text-muted">Experience And Optimism Our Priority</p>
+
+          </div>
+          <div class="row mt-lg-4 mt-2 bg-white">
+            <div class="col-12 col-lg-3 col-md-6 my-1">
+              <div class="card shadow-sm">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <div class="p-1" style="text-align: center;">
+                    <img style="height:380px;width:270px;object-fit: cover;"
+                      src="https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo=" />
+                  </div>
+                  <div class="p-2">
+                    <p class="m-0 fw-bold h5">Ahmed Kajim</p>
+                    <small class="lead fs-6 text-muted">CEO, Management Head</small>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-lg-4 col-md-6 border-start">
-                <div class="p-3">
-                  <div class="row">
-                    <div class="col-3">
-                      <img style="height:70px" src="https://img.icons8.com/color/48/000000/delivery--v2.png"
-                        class="animate__animated animate__headShake animate__slower animate__infinite" />
-                    </div>
-                    <div class="col-9">
-                      <p class="m-0 fw-bold h5">Free Delivery</p>
-                      <small class="lead fs-6 text-muted">Free shipping on orders over 10000 BDT</small>
-                    </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6 my-1">
+              <div class="card shadow-sm">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <div style="text-align: center;">
+                    <img
+                      src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                      style="height:380px;width:270px;object-fit: cover;" />
+                  </div>
+                  <div class="p-2">
+                    <p class="m-0 fw-bold h5">Hamid Mostafiz</p>
+                    <small class="lead fs-6 text-muted">MD, Marketing Head</small>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-lg-4 col-md-6 border-start">
-                <div class="p-3">
-                  <div class="row">
-                    <div class="col-3">
-                      <img
-                        src="https://img.icons8.com/external-wanicon-two-tone-wanicon/64/000000/external-service-cloud-technology-wanicon-two-tone-wanicon.png"
-                        class="animate__animated animate__tada animate__slow animate__infinite" />
-                    </div>
-                    <div class="col-9">
-                      <p class="m-0 fw-bold h5">24/7 Active service</p>
-                      <small class="lead fs-6 text-muted">Online support for nay query </small>
-                    </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6 my-1">
+              <div class="card shadow-sm">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <div class="p-1" style="text-align: center;">
+                    <img style="height:380px;width:270px;object-fit: cover;"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-zsO-WB5sqXt2_4XGhgNqeecBwQ2dm2dTFcV4NBR0hBIK9nlKRuIz8HUwEo-eEteJBm4&usqp=CAU" />
+                  </div>
+                  <div class="p-2">
+                    <p class="m-0 fw-bold h5">Ahmed Kajim</p>
+                    <small class="lead fs-6 text-muted">CEO, Management Head</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6 my-1">
+              <div class="card shadow-sm">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <div style="text-align: center;">
+                    <img
+                      src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg"
+                      style="height:380px;width:270px;object-fit: cover;" />
+                  </div>
+                  <div class="p-2">
+                    <p class="m-0 fw-bold h5">Hamid Mostafiz</p>
+                    <small class="lead fs-6 text-muted">MD, Marketing Head</small>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- brand -->
-          <div class="py-4 mt-5 d-flex flex-column  justify-content-center align-items-center">
-            <h3 class="fw-bolder">Top Brands <h3 class="fw-bolder text-secondary">Collections</h3></h3>
-            <p class="text-muted">Get All Your Gadget and Favourite Brands Items</p>
         </div>
-          <app-carousel [showBrandsSlider]="true" [carouselId]="'brands-slider'" [dataFromParents]="extraData?.brands"></app-carousel>
-       
+        <!-- brand -->
+        <div class="py-4 mt-5 d-flex flex-column  justify-content-center align-items-center">
+          <h3 class="fw-bolder">Top Brands <h3 class="fw-bolder text-secondary">Collections</h3>
+          </h3>
+          <p class="text-muted">Get All Your Gadget and Favourite Brands Items</p>
+        </div>
+        <app-carousel [showBrandsSlider]="true" [carouselId]="'brands-slider'" [dataFromParents]="extraData?.brands">
+        </app-carousel>
       </div>
     </div>
+  </div>
 </main>
-<app-footer></app-footer>      
+<app-footer></app-footer>

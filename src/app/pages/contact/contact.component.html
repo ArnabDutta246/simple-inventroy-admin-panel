@@ -1,19 +1,32 @@
 <app-header></app-header>
 <main class="bg-light pt-2 pt-lg-4 mt-5">
-    <div class="container p-2 mt-lg-5 pt-lg-5">
-      <!-- Breadcrumb -->
-      <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'Conatct Us',url:null}]" [pageTitle]="'Contact With Us'"></app-breadcrumb>
-      
-      <div class="container">
-          <div class="card" style="max-width: 700px; margin: 10px auto;">
+  <div class="container p-2 mt-lg-5 pt-lg-5">
+    <!-- Breadcrumb -->
+    <app-breadcrumb [routes]="[{name:'Home',url:'/home'},{name:'Conatct Us',url:null}]" [pageTitle]="'Contact With Us'">
+    </app-breadcrumb>
+
+    <div class="container">
+      <div class="card my-3">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+          <p>Keep In Touch</p>
+          <a href="tel:+0088 013709834125" class="text-danger">
+            <h3>+0088 013709834125</h3>
+          </a>
+          <h5>howlader.electronics21@gmail.com</h5>
+          <p>
+            17 Badda, Dhk Street - 1234, BD
+          </p>
+        </div>
+
+      </div>
+      <!-- <div class="card" style="max-width: 700px; margin: 10px auto;">
               <div class="card-header">
                   <h4>Send Your Query</h4> 
                   <p>Please enter your proper contact information for furthar communication</p>
               </div>
               <div class="card-body">
                 <div class="alert alert-danger fade show" role="alert" *ngIf="isErrorMsg" style="margin-bottom:0;padding: 0.6rem 1rem;">
-                  <small>{{isErrorMsg}} 
-                   <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 1rem;"></button> -->
+                  <small>{{isErrorMsg}}
                  </small>
                  </div>
                 <div class="row"> 
@@ -42,8 +55,8 @@
                   <button class="btn btn-danger btn-sm btn-block" (click)="submit()">Send Your Message<i class="fas fa-angle-double-right mx-2"></i></button>
                 </div>
               </div>
-          </div>
-      </div>
-    </div>    
-</main>      
+          </div> -->
+    </div>
+  </div>
+</main>
 <app-footer></app-footer>
