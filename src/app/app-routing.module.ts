@@ -4,7 +4,7 @@ import { GuardGuard } from './shared/guard/guard.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
@@ -39,7 +39,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/admin/login/login.module').then((m) => m.LoginModule),
   },
-  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  { path: '**', pathMatch: 'full', redirectTo: '/' },
 ];
 
 @NgModule({
