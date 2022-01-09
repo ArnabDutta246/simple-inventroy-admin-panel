@@ -1,6 +1,7 @@
 import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/shared/products/products.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-orders',
@@ -20,9 +21,23 @@ export class OrdersComponent implements OnInit {
   }
 
   fetchOrders() {
+    let orderDate = moment(this.selectedDate).format();
+    let orderEnd = new Date(moment(this.selectedDate).add(1, 'day').format());
+    let query = [
+      {
+        field: 'date',
+        operator: '>=',
+        value: new Date(orderDate),
+      },
+      {
+        field: 'date',
+        operator: '<=',
+        value: new Date(orderEnd),
+      },
+    ];
     this.prodServ.loaderUpdate(true);
     this.prodServ
-      .getOrders()
+      .getOrders(query)
       .pipe(
         map((res) => {
           return res.map((a) => a.payload.doc.data());
@@ -32,6 +47,7 @@ export class OrdersComponent implements OnInit {
         this.prodServ.loaderUpdate(false);
         console.log('all orders', res);
         this.allOrders = res;
+        //this.allOrders = this.allOrders.sort((a, b) => a > b);
       });
   }
 

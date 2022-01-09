@@ -90,7 +90,7 @@ export class DatabaseService {
     orderby: any[] = []
   ) {
     queryObj.forEach((q) => {
-      console.log('queries', q);
+      // console.log('queries', q);
       ref = ref.where(q.field, q.operator, q.value);
     });
     orderby.forEach((ob) => {
@@ -99,7 +99,7 @@ export class DatabaseService {
     if (limit) {
       ref = ref.limit(limit);
     }
-    console.log('reference are:', ref);
+    //console.log('reference are:', ref);
     return ref;
   }
   // Update

@@ -87,3 +87,11 @@ a:hover {
 .nav-pills .show > .nav-link {
   background-color: #f73224;
 }
+.form-control,
+.form-select {
+  background: #efefef;
+  label {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

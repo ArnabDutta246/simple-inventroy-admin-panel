@@ -28,7 +28,7 @@ export class ProductsService {
     limit = 40,
     query: QueryObj[] = [{ field: 'offerCol', operator: '==', value: true }]
   ) {
-    console.log('find query', query);
+    // console.log('find query', query);
     return this.database
       .getAllDocumentsByQuery(
         this.database.allCollections.products,
@@ -104,9 +104,10 @@ export class ProductsService {
       docObject
     );
   }
-  getOrders() {
-    return this.database.getAllDocumentsSnapshot(
-      this.database.allCollections.orders
+  getOrders(queryObj: QueryObj[] = []) {
+    return this.database.getAllDocumentsSnapshotByQuery(
+      this.database.allCollections.orders,
+      queryObj
     );
   }
 }

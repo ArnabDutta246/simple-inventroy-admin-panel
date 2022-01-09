@@ -51,13 +51,13 @@ export class ProductDetailsComponent implements OnInit, OnChanges, OnDestroy {
   getCartData(): void {
     this.carts$ = this.cartServ.getAllCartProduct().subscribe((res) => {
       if (res.length) {
-        console.log('all carts products.. details_p_oninit', res);
+        // console.log('all carts products.. details_p_oninit', res);
         let prodExist: Cart[] = res.filter((res) => res.id == this.product.id);
         if (prodExist.length) {
           this.isInTheCart = true;
           this.showAlert = true;
           this.prodQuantity = prodExist[0].quantity;
-          console.log('in cart from details', prodExist, prodExist[0].quantity);
+          //  console.log('in cart from details', prodExist, prodExist[0].quantity);
         }
       } else {
         this.isInTheCart = false;
@@ -71,7 +71,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges, OnDestroy {
   }
   // add to cart
   addToCart(prod: Product): void {
-    console.log(prod);
+    //  console.log(prod);
     if (this.prodQuantity > 0) {
       this.cartServ
         .addToCart(prod, this.prodQuantity, this.cartProd)

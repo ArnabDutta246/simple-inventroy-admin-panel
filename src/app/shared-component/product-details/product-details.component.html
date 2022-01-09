@@ -17,10 +17,10 @@
       <img [src]="product?.image" alt="" srcset="" style="height: 180px;">
     </div>
     <h5 class="fw-bolder">{{product?.name}}</h5>
-    <p>{{product?.modal}}</p>
+    <p>{{product?.category}}</p>
     <h5 class="text-danger" *ngIf="!product.offerCol">{{product.price}} BDT</h5>
-    <h5 class="text-secondary" *ngIf="product.offerCol"><del>{{product.price}} BDT</del></h5>
-    <h5 class="text-danger" *ngIf="product.offerCol">{{product.offerPrice}} BDT</h5>
+    <h5 class="text-danger" *ngIf="product.offerCol">{{product.offerPrice}} BDT <del class="text-muted"
+        style="font-size: 17px;">{{product.price}} BDT</del></h5>
     <p class="text-muted">
       {{product?.des}}
     </p>

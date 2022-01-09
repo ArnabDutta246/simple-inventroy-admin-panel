@@ -2,10 +2,10 @@
     <div class="card shadow-sm m-2 p-2 bg-white rounded p-card" (click)="selectedDetails(product)"
         data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
         <div class="">
-            <div class="product-image d-flex justify-content-center align-item-center">
-                <img [src]="product.image" alt="" srcset="" style="height: 200px;width: 200px;object-fit: contain;">
+            <div class="product-image d-flex justify-content-center align-item-center bg-light">
+                <img [src]="product.image" alt="" srcset="" style="height: 190px;width: 190px;object-fit: contain;">
             </div>
-            <div class="product-info">
+            <div class="product-info py-1">
                 <span class="badge bg-danger" *ngIf="offer" style="position: absolute;
     top: 11px;
     left: 10px;">20% Off</span>

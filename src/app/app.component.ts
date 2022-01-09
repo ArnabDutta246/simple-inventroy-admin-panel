@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   // loader
   loader() {
     this.prodServ.getLoader().subscribe((res) => {
-      console.log(res);
+      // console.log(res);
       if (res !== this.showLoader) {
         this.showLoader = res;
       }

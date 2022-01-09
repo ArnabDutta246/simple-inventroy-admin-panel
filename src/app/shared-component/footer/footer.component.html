@@ -27,12 +27,7 @@
       <div class="col-6 col-lg-2 col-md-6 p-lg-3 p-2">
         <div class="footer-brand-logo d-flex flex-column justify-content-center align-items-start">
           <h6>All Brands</h6>
-          <p class="m-0">Realme</p>
-          <p class="m-0">Xiomie</p>
-          <p class="m-0">Oppo</p>
-          <p class="m-0">Boat</p>
-          <p class="m-0">Apple</p>
-          <p class="m-0">JBL</p>
+          <p class="m-0" *ngFor="let brand of extraData?.brands">{{brand.name}}</p>
         </div>
       </div>
       <!-- <div class="col-12 col-lg-1 col-md-12 d-none d-md-block"></div> -->

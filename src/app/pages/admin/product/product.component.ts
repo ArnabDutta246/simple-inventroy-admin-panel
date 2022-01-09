@@ -35,6 +35,7 @@ export class ProductComponent implements OnInit {
   offerCol: boolean = false;
   offerPrice: number | null = null;
   docId: string | null = null;
+  model: string = null;
   //
   isWrong: boolean = false;
   errMsgDef =
@@ -177,7 +178,7 @@ export class ProductComponent implements OnInit {
       offerCol: this.offerCol,
       offerPrice: this.offerPrice,
       image: this.fb,
-      modal: this.category + this.id,
+      modal: this.model,
     };
 
     return prod;
@@ -233,6 +234,7 @@ export class ProductComponent implements OnInit {
     this.editMode = true;
     this.docId = null;
     this.userPhoto.nativeElement.value = '';
+    this.model = '';
   }
   // edit product
   editProductData(prod) {
@@ -252,6 +254,7 @@ export class ProductComponent implements OnInit {
     this.fb = prod.image;
     this.editMode = true;
     this.docId = prod.docId;
+    this.model = prod.modal;
     this.switchToAddSection();
   }
   // delete prod

@@ -1,16 +1,16 @@
 <div class="container py-3">
   <div class="card">
-    <div class="card-header bg-primary">
+    <div class="card-header bg-dark">
       <div class="d-flex justify-content-between align-items-center">
-        <div>
+        <div class="text-white">
           Orders places {{selectedDate | date:"mediumDate"}}
         </div>
-        <input type="date" name="" id="" [(ngModel)]="selectedDate">
+        <input type="date" name="" id="" [(ngModel)]="selectedDate" (ngModelChange)="fetchOrders()">
       </div>
     </div>
     <div class="card-body pt-0">
       <!-- header -->
-      <div class="row bg-light">
+      <div class="row bg-warning" style="font-size: 13px ;">
         <div class="col-1">
           Serial
         </div>
@@ -34,20 +34,20 @@
       <!-- body -->
       <div class="row py-1" *ngFor="let order of allOrders;let i=index" [class]="i%2==0?'bg-light':'bg-white'">
         <div class="col-1 text-center">
-          <small>{{i+1}}</small>
+          <small style="font-size: 17px;">{{i+1}}</small>
         </div>
         <div class="col-2">
-          <div><small>{{order.name}}</small></div>
+          <div style="font-size: 17px;"><small>{{order.name}}</small></div>
         </div>
         <div class="col-2">
-          <div><small>{{order.phone}}</small></div>
+          <div style="font-size: 17px;"><small>{{order.phone}}</small></div>
         </div>
         <div class="col-3">
-          <div><small>{{order.address}}</small></div>
+          <div style="font-size: 17px;"><small>{{order.address}}</small></div>
         </div>
         <div class="col-3">
           <ul>
-            <li *ngFor="let cart of order.cart">{{cart.name}} ({{cart.quantity}} pieces)</li>
+            <li *ngFor="let cart of order.cart" style="font-size: 17px;">{{cart.name}} ({{cart.quantity}} pieces)</li>
           </ul>
         </div>
 

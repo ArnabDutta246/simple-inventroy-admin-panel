@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       .then((res) => {
         let data: any = res.data();
         this.extraData = data;
-        console.log('extras data', data.categories);
+        // console.log('extras data', data.categories);
         this.productServ.loaderUpdate(false);
       })
       .catch((err) => {
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   // get all Products
   getAllFeaturedProducts() {
-    console.log('calling getAllFeaturedProducts');
+    // console.log('calling getAllFeaturedProducts');
     // this.featuredProducts = this.db.products;
     Promise.all([
       this.productServ.getClientsProducts([
@@ -66,13 +66,13 @@ export class HomeComponent implements OnInit {
       ]),
     ])
       .then((result) => {
-        console.log('all result', result);
+        //console.log('all result', result);
         this.featuredProducts = result[0];
         this.latestProducts = result[1];
         this.offerProducts = result[2];
       })
       .catch((err) => {
-        console.log('err');
+        // console.log('err');
       });
   }
 
