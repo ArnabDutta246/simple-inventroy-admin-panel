@@ -42,6 +42,11 @@ testem.log
 /typings
 /src/environments
 /.firebase
+/.firebaserc
+/firebase.json
+/firestore.indexes.json
+/firestore.rules
+/storage.rules
 # System Files
 .DS_Store
 Thumbs.db
